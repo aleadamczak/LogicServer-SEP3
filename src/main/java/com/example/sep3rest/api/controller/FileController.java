@@ -1,12 +1,12 @@
 package com.example.sep3rest.api.controller;
 
-import com.example.sep3rest.api.model.Category;
-import com.example.sep3rest.api.model.PublicFile;
+import com.example.sep3rest.api.model.File;
+import com.example.sep3rest.api.model.FileDTO;
+import com.example.sep3rest.api.model.User;
 import com.example.sep3rest.persistance.FileService;
+import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletRequest;
-import org.apache.tomcat.util.file.ConfigurationSource;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.web.ServerProperties;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -20,20 +20,28 @@ import java.io.IOException;
 @RestController
 public class FileController {
 
-
     @Autowired
     private FileService fileService;
 
+    // post end point for uploading a file :)
     @PostMapping("/uploadFile")
-    public PublicFile uploadFile(@RequestParam("file")MultipartFile file)
+    public FileDTO uploadFile(@RequestBody FileDTO file)
     {
+        System.out.println("File received in java server");
+        System.out.println(file.getTitle());
+        System.out.println(file.getBytes());
+        file.setCategory("COMEDY BRO");
+        User user = new User("papp", "papp", "Papp",true);
+        file.setUser(user);
         String fileName = fileService.storeFile(file);
+        System.out.println("File sent to the service");
 
-        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-                .path("/downloadFile")
-                .path(fileName)
-                .toUriString();
-        return new PublicFile(fileName, fileDownloadUri, new Category("comedy"));
+        return file;
+//        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
+//                .path("/downloadFile")
+//                .path(fileName)
+//                .toUriString();
+
     }
 
     @GetMapping("/downloadFile/{fileName:.+}")
