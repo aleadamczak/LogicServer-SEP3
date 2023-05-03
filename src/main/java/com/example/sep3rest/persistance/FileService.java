@@ -1,12 +1,16 @@
 package com.example.sep3rest.persistance;
 
+import com.example.sep3rest.api.model.File;
+import com.example.sep3rest.api.model.FileDTO;
 import com.example.sep3rest.property.FileStorageProperties;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -19,6 +23,9 @@ import java.nio.file.StandardCopyOption;
 public class FileService {
 
     private final Path fileStorageLocation;
+    private RestTemplate restTemplate = new RestTemplate();
+
+
 
     @Autowired
     public FileService(FileStorageProperties fileStorageProperties) {
@@ -31,20 +38,18 @@ public class FileService {
         }
     }
 
-    public String storeFile(MultipartFile file) {
-        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-
-        try {
-            if (fileName.contains("..")) {
-                throw new RuntimeException("Sorry! Filename contains invalid path sequence " + fileName);
-            }
-
-            Path targetLocation = this.fileStorageLocation.resolve(fileName);
-            Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
-            return fileName;
-        } catch (IOException e) {
-            throw new RuntimeException("Could not store file" + fileName + ".Please try again!", e);
+    // method that sends the file to the data server
+    public String storeFile(FileDTO file) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<File> request = new HttpEntity<>(file, headers);
+        String url = "http://localhost:5285/file/uploadFile";
+        ResponseEntity<String> response = restTemplate.postForEntity(url, request, String.class);
+        if (response.getStatusCode() != HttpStatus.OK) {
+            throw new RuntimeException(response.getBody());
         }
+        return response.getBody();
+
     }
 
     public Resource loadFileAsResource(String filename)
