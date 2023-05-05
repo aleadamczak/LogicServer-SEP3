@@ -9,6 +9,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +26,7 @@ public class FileController {
 
     // post end point for uploading a file :)
     @PostMapping("/uploadFile")
-    public FileDTO uploadFile(@RequestBody FileDTO file)
+    public ResponseEntity<FileDTO>uploadFile(@RequestBody FileDTO file)
     {
         System.out.println("File received in java server");
         System.out.println(file.getTitle());
@@ -35,13 +36,7 @@ public class FileController {
         file.setUser(user);
         String fileName = fileService.storeFile(file);
         System.out.println("File sent to the service");
-
-        return file;
-//        String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-//                .path("/downloadFile")
-//                .path(fileName)
-//                .toUriString();
-
+        return ResponseEntity.status(HttpStatus.OK).body(file);
     }
 
     @GetMapping("/downloadFile/{fileName:.+}")
