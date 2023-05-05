@@ -1,6 +1,5 @@
 package com.example.sep3rest.persistance;
 
-
 import com.example.sep3rest.api.model.User;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
