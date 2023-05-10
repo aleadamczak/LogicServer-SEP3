@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -15,10 +16,9 @@ public class UserController {
     private UserService service;
 
 
-    @GetMapping ("/getUser")
-    public ResponseEntity<User> isUserRegistered(String username) {
-
-       return ResponseEntity.status(HttpStatus.OK).body(service.isUserRegistered(username));
+    @GetMapping ("/getUser/{username}")
+    public ResponseEntity<User> isUserRegistered(@PathVariable String username) {
+       return service.isUserRegistered(username);
 
     }
 }

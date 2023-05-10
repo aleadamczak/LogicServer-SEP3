@@ -1,12 +1,6 @@
 package com.example.sep3rest.api.model;
 
 
-import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-
 public class FileDTO implements File {
 
     private String title;
@@ -22,7 +16,6 @@ public class FileDTO implements File {
         this.category = category;
         this.uploadedBy = uploadedBy;
         this.bytes = bytes;
-
     }
 
 //    public MultipartFile getFile() {
@@ -32,6 +25,7 @@ public class FileDTO implements File {
     public void setUser(User uploadedBy) {
         this.uploadedBy = uploadedBy;
     }
+
 
     public String getTitle() {
         return title;
@@ -59,7 +53,9 @@ public class FileDTO implements File {
     public void setCategory(String category) {
         this.category = category;
     }
-
+    public User getUploadedBy() {
+        return uploadedBy;
+    }
 
     public String getCategory() {
         return category;
