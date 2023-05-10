@@ -30,11 +30,12 @@ public class FileController {
         return ResponseEntity.status(HttpStatus.OK).body(file);
     }
 
-    @GetMapping("/downloadFile/{fileName:.+}")
-    public ResponseEntity<Resource> downloadFile(@PathVariable String fileName, HttpServletRequest request)
+    @GetMapping("/downloadFile/{fileId:.+}")
+    public ResponseEntity<File> downloadFile(@PathVariable int fileId)
     {
-        Resource resource = fileService.loadFileAsResource(fileName);
+        File resource = fileService.loadFileAsResource(fileId);
 
+<<<<<<< HEAD
         String contentType = null;
 
         try
@@ -54,5 +55,8 @@ public class FileController {
                 .contentType(MediaType.parseMediaType(contentType))
                 .header(HttpHeaders.CONTENT_DISPOSITION,"attachment; filename\"" + resource.getFilename() + "\"")
                 .body(resource);
+=======
+        return ResponseEntity.status(HttpStatus.OK).body(resource);
+>>>>>>> master
     }
 }

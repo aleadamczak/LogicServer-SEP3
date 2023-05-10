@@ -48,20 +48,17 @@ public class FileService {
 
     }
 
-    public Resource loadFileAsResource(String filename)
-    {
-        try{
-            Path filePath = this.fileStorageLocation.resolve(filename).normalize();
-            Resource resource = new UrlResource(filePath.toUri());
-            if (resource.exists())
-            {
-                return resource;
-            } else {
-                throw new RuntimeException("File not found " + filename);
-            }
-        }catch (MalformedURLException e)
-        {
-            throw new RuntimeException("File not found " + filename);
+    public FileDTO loadFileAsResource(int fileId) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<Integer> request = new HttpEntity<>(fileId, headers);
+        String url = "http://localhost:5285/File/downloadFile?fileId={fileId}";
+        ResponseEntity<FileDTO> response = restTemplate.exchange(url, HttpMethod.GET, request, FileDTO.class,fileId);
+        if (response.getStatusCode() != HttpStatus.OK) {
+            throw new RuntimeException(response.getBody().toString());
         }
+        return response.getBody();
     }
-}
+
+    }
+
