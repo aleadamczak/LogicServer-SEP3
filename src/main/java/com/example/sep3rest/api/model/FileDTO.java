@@ -1,6 +1,8 @@
 package com.example.sep3rest.api.model;
 
 
+<<<<<<< HEAD
+=======
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.web.multipart.MultipartFile;
@@ -9,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+>>>>>>> master
 public class FileDTO implements File {
 
     @JsonProperty
@@ -30,7 +33,6 @@ public class FileDTO implements File {
         this.category = category;
         this.uploadedBy = uploadedBy;
         this.bytes = bytes;
-
     }
 
 //    public MultipartFile getFile() {
@@ -40,6 +42,7 @@ public class FileDTO implements File {
     public void setUser(User uploadedBy) {
         this.uploadedBy = uploadedBy;
     }
+
 
     public String getTitle() {
         return title;
@@ -67,7 +70,9 @@ public class FileDTO implements File {
     public void setCategory(String category) {
         this.category = category;
     }
-
+    public User getUploadedBy() {
+        return uploadedBy;
+    }
 
     public String getCategory() {
         return category;

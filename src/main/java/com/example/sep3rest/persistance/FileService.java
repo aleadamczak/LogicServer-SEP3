@@ -9,22 +9,18 @@ import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 
 @Service
 public class FileService {
 
     private final Path fileStorageLocation;
     private RestTemplate restTemplate = new RestTemplate();
-
 
 
     @Autowired
@@ -39,16 +35,16 @@ public class FileService {
     }
 
     // method that sends the file to the data server
-    public String storeFile(FileDTO file) {
+    public ResponseEntity<File> storeFile(FileDTO file) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity<File> request = new HttpEntity<>(file, headers);
+        HttpEntity<FileDTO> request = new HttpEntity<>(file, headers);
         String url = "http://localhost:5285/file/uploadFile";
-        ResponseEntity<String> response = restTemplate.postForEntity(url, request, String.class);
-        if (response.getStatusCode() != HttpStatus.OK) {
-            throw new RuntimeException(response.getBody());
+        ResponseEntity<File> response = restTemplate.postForEntity(url, request, File.class);
+        if (response.getStatusCode() != HttpStatus.CREATED) {
+            throw new RuntimeException();
         }
-        return response.getBody();
+        return response;
 
     }
 
