@@ -32,6 +32,11 @@ public class User {
         this.id = id;
     }
 
+    public User()
+    {
+
+    }
+
     public String getUsername() {
         return username;
     }
