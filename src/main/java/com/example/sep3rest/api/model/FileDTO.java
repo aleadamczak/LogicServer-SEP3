@@ -1,8 +1,7 @@
 package com.example.sep3rest.api.model;
 
 
-<<<<<<< HEAD
-=======
+
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.web.multipart.MultipartFile;
@@ -11,7 +10,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
->>>>>>> master
+
 public class FileDTO implements File {
 
     @JsonProperty
