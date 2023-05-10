@@ -1,5 +1,6 @@
 package com.example.sep3rest.api.controller;
 
+import com.example.sep3rest.api.model.File;
 import com.example.sep3rest.api.model.FileDTO;
 import com.example.sep3rest.persistance.FileService;
 import jakarta.servlet.http.HttpServletRequest;
@@ -35,28 +36,7 @@ public class FileController {
     {
         File resource = fileService.loadFileAsResource(fileId);
 
-<<<<<<< HEAD
-        String contentType = null;
-
-        try
-        {
-            contentType = request.getServletContext().getMimeType(resource.getFile().getAbsolutePath());
-        } catch (IOException e){
-            throw new RuntimeException("Could not determine file type");
-        }
-
-
-        if (contentType == null)
-        {
-            contentType = "application/octet-stream";
-        }
-
-        return ResponseEntity.ok()
-                .contentType(MediaType.parseMediaType(contentType))
-                .header(HttpHeaders.CONTENT_DISPOSITION,"attachment; filename\"" + resource.getFilename() + "\"")
-                .body(resource);
-=======
         return ResponseEntity.status(HttpStatus.OK).body(resource);
->>>>>>> master
+
     }
 }
