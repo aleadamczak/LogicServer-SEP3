@@ -1,15 +1,13 @@
 package com.example.sep3rest.persistance;
 
-import com.example.sep3rest.api.model.Category;
-import com.example.sep3rest.api.model.File;
-import com.example.sep3rest.api.model.FileDTO;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.example.sep3rest.api.model.domain.Category;
+import com.example.sep3rest.protobuf.CategoryControllerGrpc;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-public class CategoryService {
+public class CategoryService  {
 
 
 
