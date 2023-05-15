@@ -1,29 +1,24 @@
-package com.example.sep3rest.api.model;
+package com.example.sep3rest.api.model.domain;
 
 
+import com.example.sep3rest.protobuf.Logicserver;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.springframework.web.multipart.MultipartFile;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 
 public class FileDTO implements File {
 
     private String title;
     private String description;
-    private String category;
+    private Category category;
     private User uploadedBy;
     private byte[] bytes;
-
-
     private int id;
+    private String contentType;
 
     @JsonCreator
     public FileDTO(@JsonProperty("id") int id,@JsonProperty("title") String title,
         @JsonProperty("description") String description,
-        @JsonProperty("category") String category,
+        @JsonProperty("category") Category category,
         @JsonProperty("uploadedBy") User uploadedBy,
         @JsonProperty("bytes") byte[] bytes) {
         this.id = id;
@@ -32,12 +27,11 @@ public class FileDTO implements File {
         this.category = category;
         this.uploadedBy = uploadedBy;
         this.bytes = bytes;
-
     }
 
-//    public MultipartFile getFile() {
-//        return file;
-//    }
+    public String getContentType() {
+        return contentType;
+    }
 
     public void setUser(User uploadedBy) {
         this.uploadedBy = uploadedBy;
@@ -66,12 +60,12 @@ public class FileDTO implements File {
         this.description = description;
     }
 
-    public void setCategory(String category) {
+    public void setCategory(Category category) {
         this.category = category;
     }
 
 
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 

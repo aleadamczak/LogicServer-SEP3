@@ -1,4 +1,4 @@
-package com.example.sep3rest.api.model;
+package com.example.sep3rest.api.model.domain;
 
 
 
@@ -10,4 +10,7 @@ public interface File  {
 
 
     String getTitle();
+    User getUploadedBy();
+
+    String getDescription();
 }

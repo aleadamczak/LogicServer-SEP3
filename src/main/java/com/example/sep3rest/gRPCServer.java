@@ -4,29 +4,14 @@ import com.example.sep3rest.api.controller.CategoryController;
 import com.example.sep3rest.api.controller.FileController;
 import com.example.sep3rest.api.controller.UserController;
 import com.example.sep3rest.api.model.logic.FileLogicImpl;
-import com.example.sep3rest.property.FileStorageProperties;
 import io.grpc.Server;
 import io.grpc.ServerBuilder;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.ComponentScan;
 
 import java.io.IOException;
 
-
-@SpringBootApplication
-@EnableConfigurationProperties({
-        FileStorageProperties.class
-})
-public class Sep3restApplication {
-
+public class gRPCServer {
     public static void main(String[] args) {
-
-
-        SpringApplication.run(Sep3restApplication.class, args);
-
-        Server server = ServerBuilder.forPort(9090).addService(new FileController())
+        Server server = ServerBuilder.forPort(8080).addService(new FileController())
                 .addService(new UserController())
                 .addService(new CategoryController()).build();
         try {
@@ -39,5 +24,4 @@ public class Sep3restApplication {
             throw new RuntimeException(e);
         }
     }
-
 }

@@ -1,14 +1,12 @@
 package com.example.sep3rest.persistance;
 
-import com.example.sep3rest.api.model.User;
+import com.example.sep3rest.api.model.domain.User;
+import com.example.sep3rest.protobuf.UserControllerGrpc;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.http.*;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
-import org.springframework.http.converter.json.MappingJacksonInputMessage;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.HttpServerErrorException;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.ArrayList;
@@ -28,7 +26,7 @@ public class UserService {
     }
 
 
-    public ResponseEntity<User> isUserRegistered(String username) {
+    public ResponseEntity<User> isUserRegistered(String username) throws Exception {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         String url = "http://localhost:5285/users/" + username;
@@ -36,7 +34,7 @@ public class UserService {
         ResponseEntity<User> response = restTemplate.getForEntity(url, User.class);
         User user = response.getBody();
         if (user == null) {
-            throw  new RuntimeException("User not found. It is not possible to upload files without being registered");
+            throw  new Exception("User not found. It is not possible to upload files without being registered");
         }
         if (response.getStatusCode() != HttpStatus.OK) {
            return response;
