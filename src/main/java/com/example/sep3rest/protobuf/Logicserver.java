@@ -12401,6 +12401,12 @@ public final class Logicserver {
       com.google.protobuf.MessageOrBuilder {
 
     /**
+     * <code>int32 id = 1;</code>
+     * @return The id.
+     */
+    int getId();
+
+    /**
      * <code>string name = 2;</code>
      * @return The name.
      */
@@ -12462,6 +12468,11 @@ public final class Logicserver {
             case 0:
               done = true;
               break;
+            case 8: {
+
+              id_ = input.readInt32();
+              break;
+            }
             case 18: {
               java.lang.String s = input.readStringRequireUtf8();
 
@@ -12500,6 +12511,17 @@ public final class Logicserver {
       return com.example.sep3rest.protobuf.Logicserver.internal_static_Category_fieldAccessorTable
           .ensureFieldAccessorsInitialized(
               com.example.sep3rest.protobuf.Logicserver.Category.class, com.example.sep3rest.protobuf.Logicserver.Category.Builder.class);
+    }
+
+    public static final int ID_FIELD_NUMBER = 1;
+    private int id_;
+    /**
+     * <code>int32 id = 1;</code>
+     * @return The id.
+     */
+    @java.lang.Override
+    public int getId() {
+      return id_;
     }
 
     public static final int NAME_FIELD_NUMBER = 2;
@@ -12554,6 +12576,9 @@ public final class Logicserver {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
+      if (id_ != 0) {
+        output.writeInt32(1, id_);
+      }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, name_);
       }
@@ -12566,6 +12591,10 @@ public final class Logicserver {
       if (size != -1) return size;
 
       size = 0;
+      if (id_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, id_);
+      }
       if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(name_)) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, name_);
       }
@@ -12584,6 +12613,8 @@ public final class Logicserver {
       }
       com.example.sep3rest.protobuf.Logicserver.Category other = (com.example.sep3rest.protobuf.Logicserver.Category) obj;
 
+      if (getId()
+          != other.getId()) return false;
       if (!getName()
           .equals(other.getName())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
@@ -12597,6 +12628,8 @@ public final class Logicserver {
       }
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + ID_FIELD_NUMBER;
+      hash = (53 * hash) + getId();
       hash = (37 * hash) + NAME_FIELD_NUMBER;
       hash = (53 * hash) + getName().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
@@ -12736,6 +12769,8 @@ public final class Logicserver {
       @java.lang.Override
       public Builder clear() {
         super.clear();
+        id_ = 0;
+
         name_ = "";
 
         return this;
@@ -12764,6 +12799,7 @@ public final class Logicserver {
       @java.lang.Override
       public com.example.sep3rest.protobuf.Logicserver.Category buildPartial() {
         com.example.sep3rest.protobuf.Logicserver.Category result = new com.example.sep3rest.protobuf.Logicserver.Category(this);
+        result.id_ = id_;
         result.name_ = name_;
         onBuilt();
         return result;
@@ -12813,6 +12849,9 @@ public final class Logicserver {
 
       public Builder mergeFrom(com.example.sep3rest.protobuf.Logicserver.Category other) {
         if (other == com.example.sep3rest.protobuf.Logicserver.Category.getDefaultInstance()) return this;
+        if (other.getId() != 0) {
+          setId(other.getId());
+        }
         if (!other.getName().isEmpty()) {
           name_ = other.name_;
           onChanged();
@@ -12843,6 +12882,37 @@ public final class Logicserver {
             mergeFrom(parsedMessage);
           }
         }
+        return this;
+      }
+
+      private int id_ ;
+      /**
+       * <code>int32 id = 1;</code>
+       * @return The id.
+       */
+      @java.lang.Override
+      public int getId() {
+        return id_;
+      }
+      /**
+       * <code>int32 id = 1;</code>
+       * @param value The id to set.
+       * @return This builder for chaining.
+       */
+      public Builder setId(int value) {
+        
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 id = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearId() {
+        
+        id_ = 0;
+        onChanged();
         return this;
       }
 
@@ -13882,27 +13952,27 @@ public final class Logicserver {
       "\001(\010\"A\n\rUserUpdateDto\022\020\n\010username\030\001 \001(\t\022\020" +
       "\n\010password\030\002 \001(\t\022\014\n\004name\030\003 \001(\t\"2\n\014UserLo" +
       "gInDto\022\020\n\010username\030\001 \001(\t\022\020\n\010password\030\002 \001" +
-      "(\t\" \n\010UserList\022\024\n\005users\030\001 \003(\0132\005.User\"\030\n\010" +
-      "Category\022\014\n\004name\030\002 \001(\t\"-\n\014CategoryList\022\035" +
-      "\n\ncategories\030\001 \003(\0132\t.Category2\237\001\n\022Catego" +
-      "ryController\022#\n\013addCategory\022\t.Category\032\t" +
-      ".Category\022#\n\016removeCategory\022\t.Category\032\006" +
-      ".Empty\022\037\n\006getAll\022\006.Empty\032\r.CategoryList\022" +
-      "\036\n\006update\022\t.Category\032\t.Category2\225\002\n\016File" +
-      "Controller\022!\n\006upload\022\020.FileCreationDto\032\005" +
-      ".File\022\026\n\010download\022\003.Id\032\005.File\022\"\n\006getAll\022" +
-      "\006.Empty\032\020.FileDisplayList\022\025\n\007getById\022\003.I" +
-      "d\032\005.File\022,\n\rgetByCategory\022\t.Category\032\020.F" +
-      "ileDisplayList\022\'\n\ngetByTitle\022\007.String\032\020." +
-      "FileDisplayList\022\037\n\006update\022\016.FileUpdateDt" +
-      "o\032\005.File\022\025\n\006remove\022\003.Id\032\006.Empty2\337\001\n\016User" +
-      "Controller\022\037\n\rgetByUsername\022\007.String\032\005.U" +
-      "ser\022\025\n\007getById\022\003.Id\032\005.User\022\033\n\006getAll\022\006.E" +
-      "mpty\032\t.UserList\022!\n\006create\022\020.UserCreation" +
-      "Dto\032\005.User\022\035\n\005logIn\022\r.UserLogInDto\032\005.Use" +
-      "r\022\037\n\006update\022\016.UserUpdateDto\032\005.User\022\025\n\006re" +
-      "move\022\003.Id\032\006.EmptyB\037\n\035com.example.sep3res" +
-      "t.protobufb\006proto3"
+      "(\t\" \n\010UserList\022\024\n\005users\030\001 \003(\0132\005.User\"$\n\010" +
+      "Category\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\"-\n\014Ca" +
+      "tegoryList\022\035\n\ncategories\030\001 \003(\0132\t.Categor" +
+      "y2\237\001\n\022CategoryController\022#\n\013addCategory\022" +
+      "\t.Category\032\t.Category\022#\n\016removeCategory\022" +
+      "\t.Category\032\006.Empty\022\037\n\006getAll\022\006.Empty\032\r.C" +
+      "ategoryList\022\036\n\006update\022\t.Category\032\t.Categ" +
+      "ory2\225\002\n\016FileController\022!\n\006upload\022\020.FileC" +
+      "reationDto\032\005.File\022\026\n\010download\022\003.Id\032\005.Fil" +
+      "e\022\"\n\006getAll\022\006.Empty\032\020.FileDisplayList\022\025\n" +
+      "\007getById\022\003.Id\032\005.File\022,\n\rgetByCategory\022\t." +
+      "Category\032\020.FileDisplayList\022\'\n\ngetByTitle" +
+      "\022\007.String\032\020.FileDisplayList\022\037\n\006update\022\016." +
+      "FileUpdateDto\032\005.File\022\025\n\006remove\022\003.Id\032\006.Em" +
+      "pty2\337\001\n\016UserController\022\037\n\rgetByUsername\022" +
+      "\007.String\032\005.User\022\025\n\007getById\022\003.Id\032\005.User\022\033" +
+      "\n\006getAll\022\006.Empty\032\t.UserList\022!\n\006create\022\020." +
+      "UserCreationDto\032\005.User\022\035\n\005logIn\022\r.UserLo" +
+      "gInDto\032\005.User\022\037\n\006update\022\016.UserUpdateDto\032" +
+      "\005.User\022\025\n\006remove\022\003.Id\032\006.EmptyB\037\n\035com.exa" +
+      "mple.sep3rest.protobufb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -13997,7 +14067,7 @@ public final class Logicserver {
     internal_static_Category_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Category_descriptor,
-        new java.lang.String[] { "Name", });
+        new java.lang.String[] { "Id", "Name", });
     internal_static_CategoryList_descriptor =
       getDescriptor().getMessageTypes().get(15);
     internal_static_CategoryList_fieldAccessorTable = new

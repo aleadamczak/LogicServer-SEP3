@@ -1,10 +1,17 @@
 package com.example.sep3rest.persistance;
 
 import com.example.sep3rest.api.model.domain.Category;
+import com.example.sep3rest.api.model.domain.FileDTO;
 import com.example.sep3rest.protobuf.CategoryControllerGrpc;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class CategoryService  {
@@ -28,5 +35,24 @@ public class CategoryService  {
 
     }
 
+    public ResponseEntity<List<Category>> getAllCategories(){
+        String url = "http://localhost:5285/category/getCategories";
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<String> requestEntity = new HttpEntity<>("", headers);
+        ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity, String.class);
+        String responseJson = responseEntity.getBody();
+        ObjectMapper objectMapper = new ObjectMapper();
+        List<Category> categories = new ArrayList<>();
+        try {
+            categories = objectMapper.readValue(responseJson, new TypeReference<List<Category>>() {});
+        } catch (JsonProcessingException e) {
+            e.printStackTrace();
+        }
+        //for testing purpose
+//        files.add(new FileDTO("TestTitle","Desc", "Category", new User(), new byte[0]));
+
+        return new ResponseEntity<>(categories, HttpStatus.OK);
+    }
 
 }
