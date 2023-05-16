@@ -20,13 +20,14 @@ public class FileDTO implements File {
         @JsonProperty("description") String description,
         @JsonProperty("category") Category category,
         @JsonProperty("uploadedBy") User uploadedBy,
-        @JsonProperty("bytes") byte[] bytes) {
+        @JsonProperty("bytes") byte[] bytes, @JsonProperty("contentType") String contentType) {
         this.id = id;
         this.title = title;
         this.description = description;
         this.category = category;
         this.uploadedBy = uploadedBy;
         this.bytes = bytes;
+        this.contentType = contentType;
     }
 
     public String getContentType() {

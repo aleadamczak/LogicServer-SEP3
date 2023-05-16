@@ -30,13 +30,17 @@ public class FileController extends FileControllerGrpc.FileControllerImplBase {
     @Override
     public void upload(Logicserver.FileCreationDto request, StreamObserver<Logicserver.File> responseObserver) {
 
+        System.out.println("in upload method" + request.getContentType());
         try {
 
             // first validate if the received object fulfills what it needs to :)
             fileLogic.validateFile(request);
 
+
             //convert proto file to domain object and then send to the data server
             FileDTO newFile = fileService.storeFile(fileLogic.protoToFile(request)).getBody();
+
+            System.out.println(newFile.getContentType());
 
             //construct the proto response from the retrieved file
             Logicserver.Category categoryResponse = Logicserver.Category.newBuilder().setName(newFile.getCategory().getName()).build();
