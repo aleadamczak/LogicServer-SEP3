@@ -3,6 +3,7 @@ package com.example.sep3rest.api.model.logic;
 import com.example.sep3rest.api.model.domain.File;
 import com.example.sep3rest.api.model.domain.FileCreationDTO;
 import com.example.sep3rest.api.model.domain.FileDTO;
+import com.example.sep3rest.api.model.domain.FileDownloadDto;
 import com.example.sep3rest.protobuf.Logicserver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,4 +17,5 @@ public interface FileLogic {
     FileCreationDTO protoToFile(Logicserver.FileCreationDto file);
 
     Logicserver.File FileToProto(FileDTO file);
+    Logicserver.FileDownloadDto FileToProto(FileDownloadDto file);
 }

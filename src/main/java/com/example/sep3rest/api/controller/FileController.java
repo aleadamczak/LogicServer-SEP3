@@ -2,6 +2,7 @@ package com.example.sep3rest.api.controller;
 
 import com.example.sep3rest.api.model.domain.File;
 import com.example.sep3rest.api.model.domain.FileDTO;
+import com.example.sep3rest.api.model.domain.FileDownloadDto;
 import com.example.sep3rest.api.model.domain.User;
 import com.example.sep3rest.api.model.logic.FileLogic;
 import com.example.sep3rest.api.model.logic.FileLogicImpl;
@@ -9,11 +10,14 @@ import com.example.sep3rest.persistance.FileService;
 import com.example.sep3rest.protobuf.FileControllerGrpc;
 import com.example.sep3rest.protobuf.Logicserver;
 import com.google.protobuf.ByteString;
+import io.grpc.Status;
+import io.grpc.StatusRuntimeException;
 import io.grpc.stub.StreamObserver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.HttpServerErrorException;
 
 import java.util.List;
 
@@ -61,7 +65,35 @@ public class FileController extends FileControllerGrpc.FileControllerImplBase {
     }
 
     @Override
-    public void download(Logicserver.Id request, StreamObserver<Logicserver.File> responseObserver) {
+    public void download(Logicserver.Id request, StreamObserver<Logicserver.FileDownloadDto> responseObserver) {
+
+        try{
+            int id = request.getId();
+
+            FileDownloadDto downloadFile = fileService.downloadFile(id).getBody();
+
+            Logicserver.FileDownloadDto response = fileLogic.FileToProto(downloadFile);
+
+            responseObserver.onNext(response);
+            responseObserver.onCompleted();
+        } catch (Exception e)
+        {
+            if (e.getMessage().toString().equals("500 Internal Server Error: \"\"Object reference not set to an instance of an object.\"\""))
+            {
+                String errorMessage = e.getMessage();
+                Logicserver.NullException nullException = Logicserver.NullException.newBuilder()
+                                .setMessage(errorMessage)
+                                        .build();
+                responseObserver.onError(Status.INTERNAL.withDescription(errorMessage)
+                        .asRuntimeException());
+            }
+
+
+            throw new RuntimeException(e);
+        }
+
+
+
 
     }
 
