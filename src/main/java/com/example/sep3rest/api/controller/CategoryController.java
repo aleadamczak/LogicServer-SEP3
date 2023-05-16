@@ -1,6 +1,8 @@
 package com.example.sep3rest.api.controller;
 
 import com.example.sep3rest.api.model.domain.Category;
+import com.example.sep3rest.api.model.logic.CategoryLogic;
+import com.example.sep3rest.api.model.logic.CategoryLogicImpl;
 import com.example.sep3rest.persistance.CategoryService;
 import com.example.sep3rest.protobuf.CategoryControllerGrpc;
 import com.example.sep3rest.protobuf.Logicserver;
@@ -11,15 +13,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class CategoryController extends CategoryControllerGrpc.CategoryControllerImplBase {
 
     @Autowired
 
-    private CategoryService categoryService;
+    private CategoryService categoryService = new CategoryService();
+
+    @Autowired
+
+    private CategoryLogic categoryLogic = new CategoryLogicImpl();
 
     @Override
     public void addCategory(Logicserver.Category request, StreamObserver<Logicserver.Category> responseObserver) {
+
 
     }
 
@@ -30,6 +39,12 @@ public class CategoryController extends CategoryControllerGrpc.CategoryControlle
 
     @Override
     public void getAll(Logicserver.Empty request, StreamObserver<Logicserver.CategoryList> responseObserver) {
+
+        List<Category> categories = categoryService.getAllCategories().getBody();
+        Logicserver.CategoryList response = categoryLogic.categoriesToProto(categories);
+        responseObserver.onNext(response);
+        responseObserver.onCompleted();
+
 
     }
 

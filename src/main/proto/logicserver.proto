@@ -130,6 +130,7 @@ message UserList {
 
 // proto for Categories
 message Category {
+  int32 id = 1;
   string name = 2;
 }
 

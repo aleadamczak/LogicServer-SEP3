@@ -42,7 +42,7 @@ public class FileLogicImpl implements FileLogic {
                 file.getUploadedBy().getIsAdmin(), file.getUploadedBy().getId());
 
         return new FileCreationDTO(file.getTitle(), file.getDescription(), category,
-        user,file.getBytes().toByteArray());
+        user,file.getBytes().toByteArray(), file.getContentType());
     }
 
     @Override

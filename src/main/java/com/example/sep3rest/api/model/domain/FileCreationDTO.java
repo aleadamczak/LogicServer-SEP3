@@ -11,14 +11,18 @@ public class FileCreationDTO {
     private byte[] bytes;
     private String contentType;
 
-    public FileCreationDTO(String title, String description, Category category, User uploadedBy, byte[] bytes) {
+    public FileCreationDTO(String title, String description, Category category, User uploadedBy, byte[] bytes, String contentType) {
         this.title = title;
         this.description = description;
         this.category = category;
         this.uploadedBy = uploadedBy;
         this.bytes = bytes;
+        this.contentType = contentType;
     }
 
+    public String getContentType() {
+        return contentType;
+    }
     public String getTitle() {
         return title;
     }
