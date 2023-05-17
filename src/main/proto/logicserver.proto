@@ -12,7 +12,7 @@ service CategoryController {
 
 service FileController {
   rpc upload(FileCreationDto) returns (File);
-  rpc download(Id) returns (File);
+  rpc download(Id) returns (FileDownloadDto);
   rpc getAll(Empty) returns (FileDisplayList);
   rpc getById(Id) returns (File);
   rpc getByCategory(Category) returns (FileDisplayList);
@@ -31,6 +31,10 @@ service UserController {
   rpc remove(Id) returns (Empty);
 }
 
+
+message NullException {
+  string message = 1;
+}
 
 //general
 message Empty {}
@@ -77,6 +81,11 @@ message FileDisplayDto {
   Category category = 3;
   int32 id = 4;
   User uploadedBy = 5;
+}
+
+message FileDownloadDto {
+  string title = 1;
+  bytes bytes = 2;
 }
 
 message FileList {

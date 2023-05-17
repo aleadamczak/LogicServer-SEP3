@@ -2,6 +2,7 @@ package com.example.sep3rest.api.model.logic;
 
 import com.example.sep3rest.api.model.domain.*;
 import com.example.sep3rest.protobuf.Logicserver;
+import com.google.protobuf.ByteString;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -65,5 +66,13 @@ public class FileLogicImpl implements FileLogic {
             .setId(file.getId())
             .setUploadedBy(user)
             .build();
+    }
+
+    @Override
+    public Logicserver.FileDownloadDto FileToProto(FileDownloadDto file) {
+        Logicserver.FileDownloadDto response = Logicserver.FileDownloadDto.newBuilder()
+                .setBytes(ByteString.copyFrom(file.getBytes()))
+                .setTitle(file.getTitle()).build();
+        return response;
     }
 }
