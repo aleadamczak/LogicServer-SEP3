@@ -106,4 +106,17 @@ public class FileService {
 
         return files;
     }
+
+    public ResponseEntity<FileDTO> delete(int id) throws Exception {
+        String url = "http://localhost:5285/file/" + id;
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<String> requestEntity = new HttpEntity<>("", headers);
+        ResponseEntity<FileDTO> response = restTemplate.exchange(url, HttpMethod.DELETE, requestEntity, FileDTO.class);
+
+        if (response.getStatusCode()!= HttpStatus.OK) {
+            throw new Exception("Data server error" + response.getStatusCode());
+        }
+        return response;
+    }
 }

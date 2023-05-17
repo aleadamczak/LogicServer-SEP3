@@ -13,6 +13,7 @@ import com.google.protobuf.ByteString;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
 import io.grpc.netty.shaded.io.netty.handler.codec.http2.Http2Exception;
+import io.grpc.reflection.v1alpha.ErrorResponse;
 import io.grpc.stub.StreamObserver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -41,7 +42,6 @@ public class FileController extends FileControllerGrpc.FileControllerImplBase {
             // first validate if the received object fulfills what it needs to :)
             fileLogic.validateFile(request);
 
-
             //convert proto file to domain object and then send to the data server
             FileDTO newFile = fileService.storeFile(fileLogic.protoToFile(request)).getBody();
 
@@ -65,7 +65,14 @@ public class FileController extends FileControllerGrpc.FileControllerImplBase {
 
 
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            String errorMessage = e.getMessage();
+            ErrorResponse response = ErrorResponse.newBuilder()
+                    .setErrorMessage(errorMessage)
+                    .build();
+            responseObserver.onError(
+                    Status.INTERNAL
+                            .withDescription(errorMessage)
+                            .asRuntimeException());
         }
     }
 
@@ -151,7 +158,19 @@ public class FileController extends FileControllerGrpc.FileControllerImplBase {
 
     @Override
     public void remove(Logicserver.Id request, StreamObserver<Logicserver.Empty> responseObserver) {
-        super.remove(request, responseObserver);
+        try {
+            fileService.delete(request.getId()).getBody();
+            responseObserver.onNext(Logicserver.Empty.newBuilder().build());
+        } catch (Exception e) {
+            String errorMessage = e.getMessage();
+            ErrorResponse response = ErrorResponse.newBuilder()
+                    .setErrorMessage(errorMessage)
+                    .build();
+            responseObserver.onError(
+                    Status.INTERNAL
+                            .withDescription(errorMessage)
+                            .asRuntimeException());
+        }
     }
 
     // post end point for uploading a file :)

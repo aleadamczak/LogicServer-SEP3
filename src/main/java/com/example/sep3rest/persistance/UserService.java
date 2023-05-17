@@ -26,16 +26,16 @@ public class UserService {
     }
 
 
-    public ResponseEntity<User> isUserRegistered(String username) throws Exception {
+    public ResponseEntity<User> getUserByUsername(String username)  {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         String url = "http://localhost:5285/users/" + username;
         System.out.println(url);
         ResponseEntity<User> response = restTemplate.getForEntity(url, User.class);
         User user = response.getBody();
-        if (user == null) {
-            throw  new Exception("User not found. It is not possible to upload files without being registered");
-        }
+//        if (user == null) {
+//            throw  new Exception("User not found. It is not possible to upload files without being registered");
+//        }
         if (response.getStatusCode() != HttpStatus.OK) {
            return response;
         }

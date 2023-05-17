@@ -1,10 +1,15 @@
 package com.example.sep3rest.api.controller;
 
 import com.example.sep3rest.api.model.domain.User;
+import com.example.sep3rest.api.model.logic.UserLogic;
+import com.example.sep3rest.api.model.logic.UserLogicImpl;
 import com.example.sep3rest.persistance.UserService;
 import com.example.sep3rest.protobuf.Logicserver;
 import com.example.sep3rest.protobuf.UserControllerGrpc;
+import io.grpc.Status;
+import io.grpc.reflection.v1alpha.ErrorResponse;
 import io.grpc.stub.StreamObserver;
+import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -18,6 +23,9 @@ public class UserController extends UserControllerGrpc.UserControllerImplBase {
     @Autowired
     private UserService service = new UserService();
 
+    @Autowired
+    private UserLogic userLogic = new UserLogicImpl();
+
     @Override
     public void getByUsername(Logicserver.String request, StreamObserver<Logicserver.User> responseObserver) {
         String username = request.getString();
@@ -25,18 +33,26 @@ public class UserController extends UserControllerGrpc.UserControllerImplBase {
         //get the user from the data server
         User user = null;
         try {
-            user = service.isUserRegistered(username).getBody();
+            user = userLogic.isUserRegistered(username);
+            // create the response
+            Logicserver.User response = Logicserver.User.newBuilder().setId(user.getId())
+                    .setUsername(user.getUsername()).setPassword(user.getPassword())
+                    .setIsAdmin(user.isAdmin()).setName(user.getName()).build();
+            //send the response
+            responseObserver.onNext(response);
+            responseObserver.onCompleted();
         } catch (Exception e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
+            String errorMessage = e.getMessage();
+            ErrorResponse response = ErrorResponse.newBuilder()
+                    .setErrorMessage(errorMessage)
+                    .build();
+            responseObserver.onError(
+                    Status.INTERNAL
+                            .withDescription(errorMessage)
+                            .asRuntimeException());
         }
 
-        // create the response
-        Logicserver.User response = Logicserver.User.newBuilder().setId(user.getId())
-                .setUsername(user.getUsername()).setPassword(user.getPassword())
-                .setIsAdmin(user.isAdmin()).setName(user.getName()).build();
-        //send the response
-        responseObserver.onNext(response);
-        responseObserver.onCompleted();
     }
 
     @Override
