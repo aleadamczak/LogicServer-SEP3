@@ -71,7 +71,33 @@ public class FileController extends FileControllerGrpc.FileControllerImplBase {
 
     @Override
     public void getAll(Logicserver.Empty request, StreamObserver<Logicserver.FileDisplayList> responseObserver) {
-        fileService.getAllFiles();
+        List<FileDTO> dtos = fileService.getAllFiles();
+
+        try
+        {
+            Logicserver.FileDisplayList.Builder list = Logicserver.FileDisplayList.newBuilder();
+            for (FileDTO file : dtos)
+            {
+
+                Logicserver.FileDisplayDto.Builder fileDtoBuilder = Logicserver.FileDisplayDto.newBuilder()
+                    .setTitle(file.getTitle()).setDescription(file.getDescription()).setCategory(
+                        Logicserver.Category.newBuilder().setName(file.getCategory().getName()).build())
+                    .setId(file.getId()).setUploadedBy(
+                        Logicserver.User.newBuilder().setUsername(file.getUploadedBy().getUsername())
+                            .setPassword(file.getUploadedBy().getPassword()).setName(file.getUploadedBy().getName())
+                            .setIsAdmin(file.getUploadedBy().isAdmin()).setId(file.getUploadedBy().getId()).build());
+
+                list.addFiles(fileDtoBuilder);
+            }
+
+            Logicserver.FileDisplayList listn = list.build();
+            responseObserver.onNext(listn);
+            responseObserver.onCompleted();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
     @Override
