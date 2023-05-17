@@ -19,8 +19,17 @@ public class FileLogicImpl implements FileLogic {
         || file.getBytes() == null || file.getCategory() == null) {
             throw new Exception("You have not filled all the fields. TRY AGAIN.");
         }
+
         if (file.getTitle().length() < 3 || file.getTitle().length() > 30) {
             throw new Exception("Invalid title length");
+        }
+
+        if (file.getUploadedBy() == null) {
+            throw new Exception("Cannot upload a file without being logged in.");
+        }
+
+        if (file.getDescription().isEmpty()) {
+            throw new Exception("File Description cannot be empty");
         }
 
     }
@@ -64,7 +73,8 @@ public class FileLogicImpl implements FileLogic {
     public Logicserver.FileDownloadDto FileToProto(FileDownloadDto file) {
         Logicserver.FileDownloadDto response = Logicserver.FileDownloadDto.newBuilder()
                 .setBytes(ByteString.copyFrom(file.getBytes()))
-                .setTitle(file.getTitle()).build();
+                .setTitle(file.getTitle())
+                .setContentType(file.getContentType()).build();
         return response;
     }
 }

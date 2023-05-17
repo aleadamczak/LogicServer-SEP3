@@ -7202,6 +7202,18 @@ public final class Logicserver {
      * @return The bytes.
      */
     com.google.protobuf.ByteString getBytes();
+
+    /**
+     * <code>string contentType = 3;</code>
+     * @return The contentType.
+     */
+    java.lang.String getContentType();
+    /**
+     * <code>string contentType = 3;</code>
+     * @return The bytes for contentType.
+     */
+    com.google.protobuf.ByteString
+        getContentTypeBytes();
   }
   /**
    * Protobuf type {@code FileDownloadDto}
@@ -7218,6 +7230,7 @@ public final class Logicserver {
     private FileDownloadDto() {
       title_ = "";
       bytes_ = com.google.protobuf.ByteString.EMPTY;
+      contentType_ = "";
     }
 
     @java.lang.Override
@@ -7259,6 +7272,12 @@ public final class Logicserver {
             case 18: {
 
               bytes_ = input.readBytes();
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              contentType_ = s;
               break;
             }
             default: {
@@ -7344,6 +7363,44 @@ public final class Logicserver {
       return bytes_;
     }
 
+    public static final int CONTENTTYPE_FIELD_NUMBER = 3;
+    private volatile java.lang.Object contentType_;
+    /**
+     * <code>string contentType = 3;</code>
+     * @return The contentType.
+     */
+    @java.lang.Override
+    public java.lang.String getContentType() {
+      java.lang.Object ref = contentType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        contentType_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string contentType = 3;</code>
+     * @return The bytes for contentType.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getContentTypeBytes() {
+      java.lang.Object ref = contentType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        contentType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -7364,6 +7421,9 @@ public final class Logicserver {
       if (!bytes_.isEmpty()) {
         output.writeBytes(2, bytes_);
       }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(contentType_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, contentType_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -7379,6 +7439,9 @@ public final class Logicserver {
       if (!bytes_.isEmpty()) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(2, bytes_);
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(contentType_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, contentType_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -7399,6 +7462,8 @@ public final class Logicserver {
           .equals(other.getTitle())) return false;
       if (!getBytes()
           .equals(other.getBytes())) return false;
+      if (!getContentType()
+          .equals(other.getContentType())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -7414,6 +7479,8 @@ public final class Logicserver {
       hash = (53 * hash) + getTitle().hashCode();
       hash = (37 * hash) + BYTES_FIELD_NUMBER;
       hash = (53 * hash) + getBytes().hashCode();
+      hash = (37 * hash) + CONTENTTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getContentType().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -7551,6 +7618,8 @@ public final class Logicserver {
 
         bytes_ = com.google.protobuf.ByteString.EMPTY;
 
+        contentType_ = "";
+
         return this;
       }
 
@@ -7579,6 +7648,7 @@ public final class Logicserver {
         com.example.sep3rest.protobuf.Logicserver.FileDownloadDto result = new com.example.sep3rest.protobuf.Logicserver.FileDownloadDto(this);
         result.title_ = title_;
         result.bytes_ = bytes_;
+        result.contentType_ = contentType_;
         onBuilt();
         return result;
       }
@@ -7633,6 +7703,10 @@ public final class Logicserver {
         }
         if (other.getBytes() != com.google.protobuf.ByteString.EMPTY) {
           setBytes(other.getBytes());
+        }
+        if (!other.getContentType().isEmpty()) {
+          contentType_ = other.contentType_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -7769,6 +7843,82 @@ public final class Logicserver {
       public Builder clearBytes() {
         
         bytes_ = getDefaultInstance().getBytes();
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object contentType_ = "";
+      /**
+       * <code>string contentType = 3;</code>
+       * @return The contentType.
+       */
+      public java.lang.String getContentType() {
+        java.lang.Object ref = contentType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          contentType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string contentType = 3;</code>
+       * @return The bytes for contentType.
+       */
+      public com.google.protobuf.ByteString
+          getContentTypeBytes() {
+        java.lang.Object ref = contentType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          contentType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string contentType = 3;</code>
+       * @param value The contentType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setContentType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        contentType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string contentType = 3;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearContentType() {
+        
+        contentType_ = getDefaultInstance().getContentType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string contentType = 3;</code>
+       * @param value The bytes for contentType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setContentTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        contentType_ = value;
         onChanged();
         return this;
       }
@@ -15318,38 +15468,39 @@ public final class Logicserver {
       "title\030\001 \001(\t\022\023\n\013description\030\002 \001(\t\022\033\n\010cate" +
       "gory\030\003 \001(\0132\t.Category\022\n\n\002id\030\004 \001(\005\022\031\n\nupl" +
       "oadedBy\030\005 \001(\0132\005.User\022\023\n\013contentType\030\006 \001(" +
-      "\t\"/\n\017FileDownloadDto\022\r\n\005title\030\001 \001(\t\022\r\n\005b" +
-      "ytes\030\002 \001(\014\" \n\010FileList\022\024\n\005files\030\001 \003(\0132\005." +
-      "File\"1\n\017FileDisplayList\022\036\n\005files\030\001 \003(\0132\017" +
-      ".FileDisplayDto\"U\n\004User\022\020\n\010username\030\001 \001(" +
-      "\t\022\020\n\010password\030\002 \001(\t\022\014\n\004name\030\003 \001(\t\022\017\n\007isA" +
-      "dmin\030\004 \001(\010\022\n\n\002id\030\005 \001(\005\"T\n\017UserCreationDt" +
-      "o\022\020\n\010username\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\022\014\n" +
-      "\004name\030\003 \001(\t\022\017\n\007isAdmin\030\004 \001(\010\"A\n\rUserUpda" +
-      "teDto\022\020\n\010username\030\001 \001(\t\022\020\n\010password\030\002 \001(" +
-      "\t\022\014\n\004name\030\003 \001(\t\"2\n\014UserLogInDto\022\020\n\010usern" +
-      "ame\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\" \n\010UserList\022" +
-      "\024\n\005users\030\001 \003(\0132\005.User\"$\n\010Category\022\n\n\002id\030" +
-      "\001 \001(\005\022\014\n\004name\030\002 \001(\t\"-\n\014CategoryList\022\035\n\nc" +
-      "ategories\030\001 \003(\0132\t.Category2\237\001\n\022CategoryC" +
-      "ontroller\022#\n\013addCategory\022\t.Category\032\t.Ca" +
-      "tegory\022#\n\016removeCategory\022\t.Category\032\006.Em" +
-      "pty\022\037\n\006getAll\022\006.Empty\032\r.CategoryList\022\036\n\006" +
-      "update\022\t.Category\032\t.Category2\240\002\n\016FileCon" +
-      "troller\022!\n\006upload\022\020.FileCreationDto\032\005.Fi" +
-      "le\022!\n\010download\022\003.Id\032\020.FileDownloadDto\022\"\n" +
-      "\006getAll\022\006.Empty\032\020.FileDisplayList\022\025\n\007get" +
-      "ById\022\003.Id\032\005.File\022,\n\rgetByCategory\022\t.Cate" +
-      "gory\032\020.FileDisplayList\022\'\n\ngetByTitle\022\007.S" +
-      "tring\032\020.FileDisplayList\022\037\n\006update\022\016.File" +
-      "UpdateDto\032\005.File\022\025\n\006remove\022\003.Id\032\006.Empty2" +
-      "\337\001\n\016UserController\022\037\n\rgetByUsername\022\007.St" +
-      "ring\032\005.User\022\025\n\007getById\022\003.Id\032\005.User\022\033\n\006ge" +
-      "tAll\022\006.Empty\032\t.UserList\022!\n\006create\022\020.User" +
-      "CreationDto\032\005.User\022\035\n\005logIn\022\r.UserLogInD" +
-      "to\032\005.User\022\037\n\006update\022\016.UserUpdateDto\032\005.Us" +
-      "er\022\025\n\006remove\022\003.Id\032\006.EmptyB\037\n\035com.example" +
-      ".sep3rest.protobufb\006proto3"
+      "\t\"D\n\017FileDownloadDto\022\r\n\005title\030\001 \001(\t\022\r\n\005b" +
+      "ytes\030\002 \001(\014\022\023\n\013contentType\030\003 \001(\t\" \n\010FileL" +
+      "ist\022\024\n\005files\030\001 \003(\0132\005.File\"1\n\017FileDisplay" +
+      "List\022\036\n\005files\030\001 \003(\0132\017.FileDisplayDto\"U\n\004" +
+      "User\022\020\n\010username\030\001 \001(\t\022\020\n\010password\030\002 \001(\t" +
+      "\022\014\n\004name\030\003 \001(\t\022\017\n\007isAdmin\030\004 \001(\010\022\n\n\002id\030\005 " +
+      "\001(\005\"T\n\017UserCreationDto\022\020\n\010username\030\001 \001(\t" +
+      "\022\020\n\010password\030\002 \001(\t\022\014\n\004name\030\003 \001(\t\022\017\n\007isAd" +
+      "min\030\004 \001(\010\"A\n\rUserUpdateDto\022\020\n\010username\030\001" +
+      " \001(\t\022\020\n\010password\030\002 \001(\t\022\014\n\004name\030\003 \001(\t\"2\n\014" +
+      "UserLogInDto\022\020\n\010username\030\001 \001(\t\022\020\n\010passwo" +
+      "rd\030\002 \001(\t\" \n\010UserList\022\024\n\005users\030\001 \003(\0132\005.Us" +
+      "er\"$\n\010Category\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t" +
+      "\"-\n\014CategoryList\022\035\n\ncategories\030\001 \003(\0132\t.C" +
+      "ategory2\237\001\n\022CategoryController\022#\n\013addCat" +
+      "egory\022\t.Category\032\t.Category\022#\n\016removeCat" +
+      "egory\022\t.Category\032\006.Empty\022\037\n\006getAll\022\006.Emp" +
+      "ty\032\r.CategoryList\022\036\n\006update\022\t.Category\032\t" +
+      ".Category2\240\002\n\016FileController\022!\n\006upload\022\020" +
+      ".FileCreationDto\032\005.File\022!\n\010download\022\003.Id" +
+      "\032\020.FileDownloadDto\022\"\n\006getAll\022\006.Empty\032\020.F" +
+      "ileDisplayList\022\025\n\007getById\022\003.Id\032\005.File\022,\n" +
+      "\rgetByCategory\022\t.Category\032\020.FileDisplayL" +
+      "ist\022\'\n\ngetByTitle\022\007.String\032\020.FileDisplay" +
+      "List\022\037\n\006update\022\016.FileUpdateDto\032\005.File\022\025\n" +
+      "\006remove\022\003.Id\032\006.Empty2\337\001\n\016UserController\022" +
+      "\037\n\rgetByUsername\022\007.String\032\005.User\022\025\n\007getB" +
+      "yId\022\003.Id\032\005.User\022\033\n\006getAll\022\006.Empty\032\t.User" +
+      "List\022!\n\006create\022\020.UserCreationDto\032\005.User\022" +
+      "\035\n\005logIn\022\r.UserLogInDto\032\005.User\022\037\n\006update" +
+      "\022\016.UserUpdateDto\032\005.User\022\025\n\006remove\022\003.Id\032\006" +
+      ".EmptyB\037\n\035com.example.sep3rest.protobufb" +
+      "\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -15408,7 +15559,7 @@ public final class Logicserver {
     internal_static_FileDownloadDto_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_FileDownloadDto_descriptor,
-        new java.lang.String[] { "Title", "Bytes", });
+        new java.lang.String[] { "Title", "Bytes", "ContentType", });
     internal_static_FileList_descriptor =
       getDescriptor().getMessageTypes().get(9);
     internal_static_FileList_fieldAccessorTable = new
