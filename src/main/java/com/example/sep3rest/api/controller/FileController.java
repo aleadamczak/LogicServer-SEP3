@@ -117,7 +117,7 @@ public class FileController extends FileControllerGrpc.FileControllerImplBase {
                     .setId(file.getId()).setUploadedBy(
                         Logicserver.User.newBuilder().setUsername(file.getUploadedBy().getUsername())
                             .setPassword(file.getUploadedBy().getPassword()).setName(file.getUploadedBy().getName())
-                            .setIsAdmin(file.getUploadedBy().isAdmin()).setId(file.getUploadedBy().getId()).build());
+                            .setIsAdmin(file.getUploadedBy().isAdmin()).setId(file.getUploadedBy().getId()).build()).setContentType(file.getContentType());
 
                 list.addFiles(fileDtoBuilder);
             }
