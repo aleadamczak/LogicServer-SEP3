@@ -47,8 +47,25 @@ public class FileLogicImpl implements FileLogic {
 
     @Override
     public Logicserver.File FileToProto(FileDTO file) {
+        Logicserver.Category category = Logicserver.Category.newBuilder()
+            .setName(file.getCategory().getName())
+            .build();
 
-        return null;
+        Logicserver.User user = Logicserver.User.newBuilder()
+            .setUsername(file.getUploadedBy().getUsername())
+            .setPassword(file.getUploadedBy().getPassword())
+            .setName(file.getUploadedBy().getName())
+            .setIsAdmin(file.getUploadedBy().isAdmin())
+            .setId(file.getUploadedBy().getId())
+            .build();
+
+        return Logicserver.File.newBuilder()
+            .setTitle(file.getTitle())
+            .setDescription(file.getDescription())
+            .setCategory(category)
+            .setId(file.getId())
+            .setUploadedBy(user)
+            .build();
     }
 
     @Override
