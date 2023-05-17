@@ -88,7 +88,7 @@ public class FileService {
 //    }
 
     public List<FileDTO> getAllFiles() {
-        String url = "http://localhost:5285/file/getAllFiles";
+        String url = "http://localhost:5285/file/getAllFileDtos";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<String> requestEntity = new HttpEntity<>("", headers);
