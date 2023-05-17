@@ -15,20 +15,12 @@ public class FileLogicImpl implements FileLogic {
     @Override
     public void validateFile(Logicserver.FileCreationDto file) throws Exception{
 
-        if (file.getTitle().isEmpty()) {
-            throw new Exception("Title cannot be empty");
+        if (file.getTitle().isEmpty() || file.getDescription().isEmpty()
+        || file.getBytes() == null || file.getCategory() == null) {
+            throw new Exception("You have not filled all the fields. TRY AGAIN.");
         }
-
         if (file.getTitle().length() < 3 || file.getTitle().length() > 30) {
             throw new Exception("Invalid title length");
-        }
-
-        if (file.getUploadedBy() == null) {
-            throw new Exception("Cannot upload a file without being logged in.");
-        }
-
-        if (file.getDescription().isEmpty()) {
-            throw new Exception("File Description cannot be empty");
         }
 
     }
