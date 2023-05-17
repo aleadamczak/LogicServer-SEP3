@@ -12,6 +12,7 @@ import com.example.sep3rest.protobuf.Logicserver;
 import com.google.protobuf.ByteString;
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
+import io.grpc.netty.shaded.io.netty.handler.codec.http2.Http2Exception;
 import io.grpc.stub.StreamObserver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -86,8 +87,8 @@ public class FileController extends FileControllerGrpc.FileControllerImplBase {
             {
                 String errorMessage = e.getMessage();
                 Logicserver.NullException nullException = Logicserver.NullException.newBuilder()
-                                .setMessage(errorMessage)
-                                        .build();
+                        .setMessage(errorMessage)
+                        .build();
                 responseObserver.onError(Status.INTERNAL.withDescription(errorMessage)
                         .asRuntimeException());
             }
@@ -95,10 +96,6 @@ public class FileController extends FileControllerGrpc.FileControllerImplBase {
 
             throw new RuntimeException(e);
         }
-
-
-
-
     }
 
     @Override
