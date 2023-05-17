@@ -9,8 +9,11 @@ class Sep3restApplicationTests {
     //RestTemplate restTemplate = new RestTemplate();
 
     @Test
-    public void testAddition() {
-        //Calculator calculator = new Calculator();
+    public void FileSentAndReceived() {
+
+
+
+
         int result = 5;
         assertEquals(5, result);
     }
