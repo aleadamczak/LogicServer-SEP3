@@ -3,9 +3,11 @@ package com.example.sep3rest.persistance;
 import com.example.sep3rest.api.model.domain.File;
 import com.example.sep3rest.api.model.domain.FileCreationDTO;
 import com.example.sep3rest.api.model.domain.FileDTO;
+import com.example.sep3rest.api.model.domain.FileDownloadDto;
 import com.example.sep3rest.property.FileStorageProperties;
 
 import com.example.sep3rest.protobuf.FileControllerGrpc;
+import com.example.sep3rest.protobuf.Logicserver;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -55,16 +57,16 @@ public class FileService {
         return response;
     }
 
-    public FileDTO loadFileAsResource(int fileId) {
+    public ResponseEntity<FileDownloadDto> downloadFile(int fileId) throws Exception{
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<Integer> request = new HttpEntity<>(fileId, headers);
         String url = "http://localhost:5285/File/downloadFile?fileId={fileId}";
-        ResponseEntity<FileDTO> response = restTemplate.exchange(url, HttpMethod.GET, request, FileDTO.class,fileId);
+        ResponseEntity<FileDownloadDto> response = restTemplate.exchange(url, HttpMethod.GET, request, FileDownloadDto.class,fileId);
         if (response.getStatusCode() != HttpStatus.OK) {
             throw new RuntimeException(response.getBody().toString());
         }
-        return response.getBody();
+        return response;
 
     }
 
@@ -86,7 +88,7 @@ public class FileService {
 //    }
 
     public List<FileDTO> getAllFiles() {
-        String url = "http://localhost:5285/file/getAllFiles";
+        String url = "http://localhost:5285/file/getAllFileDtos";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<String> requestEntity = new HttpEntity<>("", headers);

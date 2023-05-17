@@ -46,28 +46,28 @@ public final class FileControllerGrpc {
   }
 
   private static volatile io.grpc.MethodDescriptor<com.example.sep3rest.protobuf.Logicserver.Id,
-      com.example.sep3rest.protobuf.Logicserver.File> getDownloadMethod;
+      com.example.sep3rest.protobuf.Logicserver.FileDownloadDto> getDownloadMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "download",
       requestType = com.example.sep3rest.protobuf.Logicserver.Id.class,
-      responseType = com.example.sep3rest.protobuf.Logicserver.File.class,
+      responseType = com.example.sep3rest.protobuf.Logicserver.FileDownloadDto.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
   public static io.grpc.MethodDescriptor<com.example.sep3rest.protobuf.Logicserver.Id,
-      com.example.sep3rest.protobuf.Logicserver.File> getDownloadMethod() {
-    io.grpc.MethodDescriptor<com.example.sep3rest.protobuf.Logicserver.Id, com.example.sep3rest.protobuf.Logicserver.File> getDownloadMethod;
+      com.example.sep3rest.protobuf.Logicserver.FileDownloadDto> getDownloadMethod() {
+    io.grpc.MethodDescriptor<com.example.sep3rest.protobuf.Logicserver.Id, com.example.sep3rest.protobuf.Logicserver.FileDownloadDto> getDownloadMethod;
     if ((getDownloadMethod = FileControllerGrpc.getDownloadMethod) == null) {
       synchronized (FileControllerGrpc.class) {
         if ((getDownloadMethod = FileControllerGrpc.getDownloadMethod) == null) {
           FileControllerGrpc.getDownloadMethod = getDownloadMethod =
-              io.grpc.MethodDescriptor.<com.example.sep3rest.protobuf.Logicserver.Id, com.example.sep3rest.protobuf.Logicserver.File>newBuilder()
+              io.grpc.MethodDescriptor.<com.example.sep3rest.protobuf.Logicserver.Id, com.example.sep3rest.protobuf.Logicserver.FileDownloadDto>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(SERVICE_NAME, "download"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
                   com.example.sep3rest.protobuf.Logicserver.Id.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  com.example.sep3rest.protobuf.Logicserver.File.getDefaultInstance()))
+                  com.example.sep3rest.protobuf.Logicserver.FileDownloadDto.getDefaultInstance()))
               .setSchemaDescriptor(new FileControllerMethodDescriptorSupplier("download"))
               .build();
         }
@@ -320,7 +320,7 @@ public final class FileControllerGrpc {
     /**
      */
     public void download(com.example.sep3rest.protobuf.Logicserver.Id request,
-        io.grpc.stub.StreamObserver<com.example.sep3rest.protobuf.Logicserver.File> responseObserver) {
+        io.grpc.stub.StreamObserver<com.example.sep3rest.protobuf.Logicserver.FileDownloadDto> responseObserver) {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getDownloadMethod(), responseObserver);
     }
 
@@ -380,7 +380,7 @@ public final class FileControllerGrpc {
             io.grpc.stub.ServerCalls.asyncUnaryCall(
               new MethodHandlers<
                 com.example.sep3rest.protobuf.Logicserver.Id,
-                com.example.sep3rest.protobuf.Logicserver.File>(
+                com.example.sep3rest.protobuf.Logicserver.FileDownloadDto>(
                   this, METHODID_DOWNLOAD)))
           .addMethod(
             getGetAllMethod(),
@@ -453,7 +453,7 @@ public final class FileControllerGrpc {
     /**
      */
     public void download(com.example.sep3rest.protobuf.Logicserver.Id request,
-        io.grpc.stub.StreamObserver<com.example.sep3rest.protobuf.Logicserver.File> responseObserver) {
+        io.grpc.stub.StreamObserver<com.example.sep3rest.protobuf.Logicserver.FileDownloadDto> responseObserver) {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getDownloadMethod(), getCallOptions()), request, responseObserver);
     }
@@ -530,7 +530,7 @@ public final class FileControllerGrpc {
 
     /**
      */
-    public com.example.sep3rest.protobuf.Logicserver.File download(com.example.sep3rest.protobuf.Logicserver.Id request) {
+    public com.example.sep3rest.protobuf.Logicserver.FileDownloadDto download(com.example.sep3rest.protobuf.Logicserver.Id request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getDownloadMethod(), getCallOptions(), request);
     }
@@ -602,7 +602,7 @@ public final class FileControllerGrpc {
 
     /**
      */
-    public com.google.common.util.concurrent.ListenableFuture<com.example.sep3rest.protobuf.Logicserver.File> download(
+    public com.google.common.util.concurrent.ListenableFuture<com.example.sep3rest.protobuf.Logicserver.FileDownloadDto> download(
         com.example.sep3rest.protobuf.Logicserver.Id request) {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getDownloadMethod(), getCallOptions()), request);
@@ -689,7 +689,7 @@ public final class FileControllerGrpc {
           break;
         case METHODID_DOWNLOAD:
           serviceImpl.download((com.example.sep3rest.protobuf.Logicserver.Id) request,
-              (io.grpc.stub.StreamObserver<com.example.sep3rest.protobuf.Logicserver.File>) responseObserver);
+              (io.grpc.stub.StreamObserver<com.example.sep3rest.protobuf.Logicserver.FileDownloadDto>) responseObserver);
           break;
         case METHODID_GET_ALL:
           serviceImpl.getAll((com.example.sep3rest.protobuf.Logicserver.Empty) request,

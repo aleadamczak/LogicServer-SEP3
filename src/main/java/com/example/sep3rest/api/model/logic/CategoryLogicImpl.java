@@ -23,15 +23,24 @@ public class CategoryLogicImpl implements CategoryLogic{
     @Override
     public Logicserver.CategoryList categoriesToProto(List<Category> categories) {
 
-        Logicserver.CategoryList response = Logicserver.CategoryList.newBuilder().build();
+        Logicserver.CategoryList.Builder responseBuilder = Logicserver.CategoryList.newBuilder();
         for (int i = 0; i < categories.size() ; i++) {
 
-            Category current = categories.get(i);
-            Logicserver.Category category = Logicserver.Category.newBuilder().setId(current.getId()).setName(current.getName()).build();
+//            Category current = categories.get(i);
+//            Logicserver.Category category = Logicserver.Category.newBuilder().setId(current.getId()).setName(current.getName()).build();
+//
+//            response.newBuilder().setCategories(i, category).build();
 
-            response.newBuilder().setCategories(i, category).build();
+            Category current = categories.get(i);
+            Logicserver.Category category = Logicserver.Category.newBuilder()
+                    .setId(current.getId())
+                    .setName(current.getName())
+                    .build();
+
+            responseBuilder.addCategories(category);
 
         }
+        Logicserver.CategoryList response = responseBuilder.build();
         return response;
     }
 

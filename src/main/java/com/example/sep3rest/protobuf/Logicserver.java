@@ -14,6 +14,576 @@ public final class Logicserver {
     registerAllExtensions(
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
+  public interface NullExceptionOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:NullException)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string message = 1;</code>
+     * @return The message.
+     */
+    java.lang.String getMessage();
+    /**
+     * <code>string message = 1;</code>
+     * @return The bytes for message.
+     */
+    com.google.protobuf.ByteString
+        getMessageBytes();
+  }
+  /**
+   * Protobuf type {@code NullException}
+   */
+  public static final class NullException extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:NullException)
+      NullExceptionOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use NullException.newBuilder() to construct.
+    private NullException(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private NullException() {
+      message_ = "";
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new NullException();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private NullException(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              message_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.example.sep3rest.protobuf.Logicserver.internal_static_NullException_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.example.sep3rest.protobuf.Logicserver.internal_static_NullException_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.example.sep3rest.protobuf.Logicserver.NullException.class, com.example.sep3rest.protobuf.Logicserver.NullException.Builder.class);
+    }
+
+    public static final int MESSAGE_FIELD_NUMBER = 1;
+    private volatile java.lang.Object message_;
+    /**
+     * <code>string message = 1;</code>
+     * @return The message.
+     */
+    @java.lang.Override
+    public java.lang.String getMessage() {
+      java.lang.Object ref = message_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        message_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string message = 1;</code>
+     * @return The bytes for message.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getMessageBytes() {
+      java.lang.Object ref = message_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        message_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, message_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(message_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, message_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.example.sep3rest.protobuf.Logicserver.NullException)) {
+        return super.equals(obj);
+      }
+      com.example.sep3rest.protobuf.Logicserver.NullException other = (com.example.sep3rest.protobuf.Logicserver.NullException) obj;
+
+      if (!getMessage()
+          .equals(other.getMessage())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
+      hash = (53 * hash) + getMessage().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.example.sep3rest.protobuf.Logicserver.NullException parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.sep3rest.protobuf.Logicserver.NullException parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.sep3rest.protobuf.Logicserver.NullException parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.sep3rest.protobuf.Logicserver.NullException parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.sep3rest.protobuf.Logicserver.NullException parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.sep3rest.protobuf.Logicserver.NullException parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.sep3rest.protobuf.Logicserver.NullException parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.example.sep3rest.protobuf.Logicserver.NullException parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.example.sep3rest.protobuf.Logicserver.NullException parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.example.sep3rest.protobuf.Logicserver.NullException parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.example.sep3rest.protobuf.Logicserver.NullException parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.example.sep3rest.protobuf.Logicserver.NullException parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.example.sep3rest.protobuf.Logicserver.NullException prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code NullException}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:NullException)
+        com.example.sep3rest.protobuf.Logicserver.NullExceptionOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.example.sep3rest.protobuf.Logicserver.internal_static_NullException_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.example.sep3rest.protobuf.Logicserver.internal_static_NullException_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.example.sep3rest.protobuf.Logicserver.NullException.class, com.example.sep3rest.protobuf.Logicserver.NullException.Builder.class);
+      }
+
+      // Construct using com.example.sep3rest.protobuf.Logicserver.NullException.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        message_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.example.sep3rest.protobuf.Logicserver.internal_static_NullException_descriptor;
+      }
+
+      @java.lang.Override
+      public com.example.sep3rest.protobuf.Logicserver.NullException getDefaultInstanceForType() {
+        return com.example.sep3rest.protobuf.Logicserver.NullException.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.example.sep3rest.protobuf.Logicserver.NullException build() {
+        com.example.sep3rest.protobuf.Logicserver.NullException result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.example.sep3rest.protobuf.Logicserver.NullException buildPartial() {
+        com.example.sep3rest.protobuf.Logicserver.NullException result = new com.example.sep3rest.protobuf.Logicserver.NullException(this);
+        result.message_ = message_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.example.sep3rest.protobuf.Logicserver.NullException) {
+          return mergeFrom((com.example.sep3rest.protobuf.Logicserver.NullException)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.example.sep3rest.protobuf.Logicserver.NullException other) {
+        if (other == com.example.sep3rest.protobuf.Logicserver.NullException.getDefaultInstance()) return this;
+        if (!other.getMessage().isEmpty()) {
+          message_ = other.message_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.example.sep3rest.protobuf.Logicserver.NullException parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.example.sep3rest.protobuf.Logicserver.NullException) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object message_ = "";
+      /**
+       * <code>string message = 1;</code>
+       * @return The message.
+       */
+      public java.lang.String getMessage() {
+        java.lang.Object ref = message_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          message_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string message = 1;</code>
+       * @return The bytes for message.
+       */
+      public com.google.protobuf.ByteString
+          getMessageBytes() {
+        java.lang.Object ref = message_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          message_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string message = 1;</code>
+       * @param value The message to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMessage(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        message_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string message = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearMessage() {
+        
+        message_ = getDefaultInstance().getMessage();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string message = 1;</code>
+       * @param value The bytes for message to set.
+       * @return This builder for chaining.
+       */
+      public Builder setMessageBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        message_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:NullException)
+    }
+
+    // @@protoc_insertion_point(class_scope:NullException)
+    private static final com.example.sep3rest.protobuf.Logicserver.NullException DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.example.sep3rest.protobuf.Logicserver.NullException();
+    }
+
+    public static com.example.sep3rest.protobuf.Logicserver.NullException getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<NullException>
+        PARSER = new com.google.protobuf.AbstractParser<NullException>() {
+      @java.lang.Override
+      public NullException parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new NullException(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<NullException> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<NullException> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.example.sep3rest.protobuf.Logicserver.NullException getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface EmptyOrBuilder extends
       // @@protoc_insertion_point(interface_extends:Empty)
       com.google.protobuf.MessageOrBuilder {
@@ -5328,6 +5898,18 @@ public final class Logicserver {
      * <code>.User uploadedBy = 5;</code>
      */
     com.example.sep3rest.protobuf.Logicserver.UserOrBuilder getUploadedByOrBuilder();
+
+    /**
+     * <code>string contentType = 6;</code>
+     * @return The contentType.
+     */
+    java.lang.String getContentType();
+    /**
+     * <code>string contentType = 6;</code>
+     * @return The bytes for contentType.
+     */
+    com.google.protobuf.ByteString
+        getContentTypeBytes();
   }
   /**
    * Protobuf type {@code FileDisplayDto}
@@ -5344,6 +5926,7 @@ public final class Logicserver {
     private FileDisplayDto() {
       title_ = "";
       description_ = "";
+      contentType_ = "";
     }
 
     @java.lang.Override
@@ -5417,6 +6000,12 @@ public final class Logicserver {
                 uploadedBy_ = subBuilder.buildPartial();
               }
 
+              break;
+            }
+            case 50: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              contentType_ = s;
               break;
             }
             default: {
@@ -5592,6 +6181,44 @@ public final class Logicserver {
       return getUploadedBy();
     }
 
+    public static final int CONTENTTYPE_FIELD_NUMBER = 6;
+    private volatile java.lang.Object contentType_;
+    /**
+     * <code>string contentType = 6;</code>
+     * @return The contentType.
+     */
+    @java.lang.Override
+    public java.lang.String getContentType() {
+      java.lang.Object ref = contentType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        contentType_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string contentType = 6;</code>
+     * @return The bytes for contentType.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getContentTypeBytes() {
+      java.lang.Object ref = contentType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        contentType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -5621,6 +6248,9 @@ public final class Logicserver {
       if (uploadedBy_ != null) {
         output.writeMessage(5, getUploadedBy());
       }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(contentType_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 6, contentType_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -5647,6 +6277,9 @@ public final class Logicserver {
       if (uploadedBy_ != null) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(5, getUploadedBy());
+      }
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(contentType_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, contentType_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -5679,6 +6312,8 @@ public final class Logicserver {
         if (!getUploadedBy()
             .equals(other.getUploadedBy())) return false;
       }
+      if (!getContentType()
+          .equals(other.getContentType())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -5704,6 +6339,8 @@ public final class Logicserver {
         hash = (37 * hash) + UPLOADEDBY_FIELD_NUMBER;
         hash = (53 * hash) + getUploadedBy().hashCode();
       }
+      hash = (37 * hash) + CONTENTTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getContentType().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -5855,6 +6492,8 @@ public final class Logicserver {
           uploadedBy_ = null;
           uploadedByBuilder_ = null;
         }
+        contentType_ = "";
+
         return this;
       }
 
@@ -5894,6 +6533,7 @@ public final class Logicserver {
         } else {
           result.uploadedBy_ = uploadedByBuilder_.build();
         }
+        result.contentType_ = contentType_;
         onBuilt();
         return result;
       }
@@ -5958,6 +6598,10 @@ public final class Logicserver {
         }
         if (other.hasUploadedBy()) {
           mergeUploadedBy(other.getUploadedBy());
+        }
+        if (!other.getContentType().isEmpty()) {
+          contentType_ = other.contentType_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -6408,6 +7052,82 @@ public final class Logicserver {
         }
         return uploadedByBuilder_;
       }
+
+      private java.lang.Object contentType_ = "";
+      /**
+       * <code>string contentType = 6;</code>
+       * @return The contentType.
+       */
+      public java.lang.String getContentType() {
+        java.lang.Object ref = contentType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          contentType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string contentType = 6;</code>
+       * @return The bytes for contentType.
+       */
+      public com.google.protobuf.ByteString
+          getContentTypeBytes() {
+        java.lang.Object ref = contentType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          contentType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string contentType = 6;</code>
+       * @param value The contentType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setContentType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        contentType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string contentType = 6;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearContentType() {
+        
+        contentType_ = getDefaultInstance().getContentType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string contentType = 6;</code>
+       * @param value The bytes for contentType to set.
+       * @return This builder for chaining.
+       */
+      public Builder setContentTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        contentType_ = value;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -6456,6 +7176,650 @@ public final class Logicserver {
 
     @java.lang.Override
     public com.example.sep3rest.protobuf.Logicserver.FileDisplayDto getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface FileDownloadDtoOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:FileDownloadDto)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>string title = 1;</code>
+     * @return The title.
+     */
+    java.lang.String getTitle();
+    /**
+     * <code>string title = 1;</code>
+     * @return The bytes for title.
+     */
+    com.google.protobuf.ByteString
+        getTitleBytes();
+
+    /**
+     * <code>bytes bytes = 2;</code>
+     * @return The bytes.
+     */
+    com.google.protobuf.ByteString getBytes();
+  }
+  /**
+   * Protobuf type {@code FileDownloadDto}
+   */
+  public static final class FileDownloadDto extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:FileDownloadDto)
+      FileDownloadDtoOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use FileDownloadDto.newBuilder() to construct.
+    private FileDownloadDto(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private FileDownloadDto() {
+      title_ = "";
+      bytes_ = com.google.protobuf.ByteString.EMPTY;
+    }
+
+    @java.lang.Override
+    @SuppressWarnings({"unused"})
+    protected java.lang.Object newInstance(
+        UnusedPrivateParameter unused) {
+      return new FileDownloadDto();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private FileDownloadDto(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 10: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              title_ = s;
+              break;
+            }
+            case 18: {
+
+              bytes_ = input.readBytes();
+              break;
+            }
+            default: {
+              if (!parseUnknownField(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (com.google.protobuf.UninitializedMessageException e) {
+        throw e.asInvalidProtocolBufferException().setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.example.sep3rest.protobuf.Logicserver.internal_static_FileDownloadDto_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.example.sep3rest.protobuf.Logicserver.internal_static_FileDownloadDto_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.example.sep3rest.protobuf.Logicserver.FileDownloadDto.class, com.example.sep3rest.protobuf.Logicserver.FileDownloadDto.Builder.class);
+    }
+
+    public static final int TITLE_FIELD_NUMBER = 1;
+    private volatile java.lang.Object title_;
+    /**
+     * <code>string title = 1;</code>
+     * @return The title.
+     */
+    @java.lang.Override
+    public java.lang.String getTitle() {
+      java.lang.Object ref = title_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        title_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string title = 1;</code>
+     * @return The bytes for title.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTitleBytes() {
+      java.lang.Object ref = title_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        title_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int BYTES_FIELD_NUMBER = 2;
+    private com.google.protobuf.ByteString bytes_;
+    /**
+     * <code>bytes bytes = 2;</code>
+     * @return The bytes.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString getBytes() {
+      return bytes_;
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(title_)) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, title_);
+      }
+      if (!bytes_.isEmpty()) {
+        output.writeBytes(2, bytes_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (!com.google.protobuf.GeneratedMessageV3.isStringEmpty(title_)) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, title_);
+      }
+      if (!bytes_.isEmpty()) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, bytes_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof com.example.sep3rest.protobuf.Logicserver.FileDownloadDto)) {
+        return super.equals(obj);
+      }
+      com.example.sep3rest.protobuf.Logicserver.FileDownloadDto other = (com.example.sep3rest.protobuf.Logicserver.FileDownloadDto) obj;
+
+      if (!getTitle()
+          .equals(other.getTitle())) return false;
+      if (!getBytes()
+          .equals(other.getBytes())) return false;
+      if (!unknownFields.equals(other.unknownFields)) return false;
+      return true;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + TITLE_FIELD_NUMBER;
+      hash = (53 * hash) + getTitle().hashCode();
+      hash = (37 * hash) + BYTES_FIELD_NUMBER;
+      hash = (53 * hash) + getBytes().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static com.example.sep3rest.protobuf.Logicserver.FileDownloadDto parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.sep3rest.protobuf.Logicserver.FileDownloadDto parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.sep3rest.protobuf.Logicserver.FileDownloadDto parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.sep3rest.protobuf.Logicserver.FileDownloadDto parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.sep3rest.protobuf.Logicserver.FileDownloadDto parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.example.sep3rest.protobuf.Logicserver.FileDownloadDto parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.example.sep3rest.protobuf.Logicserver.FileDownloadDto parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.example.sep3rest.protobuf.Logicserver.FileDownloadDto parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.example.sep3rest.protobuf.Logicserver.FileDownloadDto parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static com.example.sep3rest.protobuf.Logicserver.FileDownloadDto parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static com.example.sep3rest.protobuf.Logicserver.FileDownloadDto parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static com.example.sep3rest.protobuf.Logicserver.FileDownloadDto parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(com.example.sep3rest.protobuf.Logicserver.FileDownloadDto prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code FileDownloadDto}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:FileDownloadDto)
+        com.example.sep3rest.protobuf.Logicserver.FileDownloadDtoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.example.sep3rest.protobuf.Logicserver.internal_static_FileDownloadDto_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.example.sep3rest.protobuf.Logicserver.internal_static_FileDownloadDto_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.example.sep3rest.protobuf.Logicserver.FileDownloadDto.class, com.example.sep3rest.protobuf.Logicserver.FileDownloadDto.Builder.class);
+      }
+
+      // Construct using com.example.sep3rest.protobuf.Logicserver.FileDownloadDto.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        title_ = "";
+
+        bytes_ = com.google.protobuf.ByteString.EMPTY;
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.example.sep3rest.protobuf.Logicserver.internal_static_FileDownloadDto_descriptor;
+      }
+
+      @java.lang.Override
+      public com.example.sep3rest.protobuf.Logicserver.FileDownloadDto getDefaultInstanceForType() {
+        return com.example.sep3rest.protobuf.Logicserver.FileDownloadDto.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public com.example.sep3rest.protobuf.Logicserver.FileDownloadDto build() {
+        com.example.sep3rest.protobuf.Logicserver.FileDownloadDto result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public com.example.sep3rest.protobuf.Logicserver.FileDownloadDto buildPartial() {
+        com.example.sep3rest.protobuf.Logicserver.FileDownloadDto result = new com.example.sep3rest.protobuf.Logicserver.FileDownloadDto(this);
+        result.title_ = title_;
+        result.bytes_ = bytes_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.example.sep3rest.protobuf.Logicserver.FileDownloadDto) {
+          return mergeFrom((com.example.sep3rest.protobuf.Logicserver.FileDownloadDto)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.example.sep3rest.protobuf.Logicserver.FileDownloadDto other) {
+        if (other == com.example.sep3rest.protobuf.Logicserver.FileDownloadDto.getDefaultInstance()) return this;
+        if (!other.getTitle().isEmpty()) {
+          title_ = other.title_;
+          onChanged();
+        }
+        if (other.getBytes() != com.google.protobuf.ByteString.EMPTY) {
+          setBytes(other.getBytes());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.example.sep3rest.protobuf.Logicserver.FileDownloadDto parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.example.sep3rest.protobuf.Logicserver.FileDownloadDto) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private java.lang.Object title_ = "";
+      /**
+       * <code>string title = 1;</code>
+       * @return The title.
+       */
+      public java.lang.String getTitle() {
+        java.lang.Object ref = title_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          title_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string title = 1;</code>
+       * @return The bytes for title.
+       */
+      public com.google.protobuf.ByteString
+          getTitleBytes() {
+        java.lang.Object ref = title_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          title_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string title = 1;</code>
+       * @param value The title to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTitle(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        title_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string title = 1;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTitle() {
+        
+        title_ = getDefaultInstance().getTitle();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string title = 1;</code>
+       * @param value The bytes for title to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTitleBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        title_ = value;
+        onChanged();
+        return this;
+      }
+
+      private com.google.protobuf.ByteString bytes_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>bytes bytes = 2;</code>
+       * @return The bytes.
+       */
+      @java.lang.Override
+      public com.google.protobuf.ByteString getBytes() {
+        return bytes_;
+      }
+      /**
+       * <code>bytes bytes = 2;</code>
+       * @param value The bytes to set.
+       * @return This builder for chaining.
+       */
+      public Builder setBytes(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        bytes_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>bytes bytes = 2;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearBytes() {
+        
+        bytes_ = getDefaultInstance().getBytes();
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFields(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:FileDownloadDto)
+    }
+
+    // @@protoc_insertion_point(class_scope:FileDownloadDto)
+    private static final com.example.sep3rest.protobuf.Logicserver.FileDownloadDto DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new com.example.sep3rest.protobuf.Logicserver.FileDownloadDto();
+    }
+
+    public static com.example.sep3rest.protobuf.Logicserver.FileDownloadDto getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<FileDownloadDto>
+        PARSER = new com.google.protobuf.AbstractParser<FileDownloadDto>() {
+      @java.lang.Override
+      public FileDownloadDto parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new FileDownloadDto(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<FileDownloadDto> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<FileDownloadDto> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.example.sep3rest.protobuf.Logicserver.FileDownloadDto getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -13840,6 +15204,11 @@ public final class Logicserver {
   }
 
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_NullException_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_NullException_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_Empty_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -13874,6 +15243,11 @@ public final class Logicserver {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_FileDisplayDto_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_FileDownloadDto_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_FileDownloadDto_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_FileList_descriptor;
   private static final 
@@ -13928,148 +15302,163 @@ public final class Logicserver {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\021logicserver.proto\"\007\n\005Empty\"\030\n\006String\022\016" +
-      "\n\006string\030\001 \001(\t\"\020\n\002Id\022\n\n\002id\030\001 \001(\005\"\222\001\n\004Fil" +
-      "e\022\r\n\005title\030\001 \001(\t\022\023\n\013description\030\002 \001(\t\022\r\n" +
-      "\005bytes\030\003 \001(\014\022\033\n\010category\030\004 \001(\0132\t.Categor" +
-      "y\022\031\n\nuploadedBy\030\005 \001(\0132\005.User\022\023\n\013contentT" +
-      "ype\030\006 \001(\t\022\n\n\002id\030\007 \001(\005\"\221\001\n\017FileCreationDt" +
-      "o\022\r\n\005title\030\001 \001(\t\022\023\n\013description\030\002 \001(\t\022\r\n" +
-      "\005bytes\030\003 \001(\014\022\033\n\010category\030\004 \001(\0132\t.Categor" +
-      "y\022\031\n\nuploadedBy\030\005 \001(\0132\005.User\022\023\n\013contentT" +
-      "ype\030\006 \001(\t\"\\\n\rFileUpdateDto\022\r\n\005title\030\001 \001(" +
-      "\t\022\023\n\013description\030\002 \001(\t\022\033\n\010category\030\003 \001(\013" +
-      "2\t.Category\022\n\n\002id\030\004 \001(\005\"x\n\016FileDisplayDt" +
-      "o\022\r\n\005title\030\001 \001(\t\022\023\n\013description\030\002 \001(\t\022\033\n" +
-      "\010category\030\003 \001(\0132\t.Category\022\n\n\002id\030\004 \001(\005\022\031" +
-      "\n\nuploadedBy\030\005 \001(\0132\005.User\" \n\010FileList\022\024\n" +
-      "\005files\030\001 \003(\0132\005.File\"1\n\017FileDisplayList\022\036" +
-      "\n\005files\030\001 \003(\0132\017.FileDisplayDto\"U\n\004User\022\020" +
-      "\n\010username\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\022\014\n\004na" +
-      "me\030\003 \001(\t\022\017\n\007isAdmin\030\004 \001(\010\022\n\n\002id\030\005 \001(\005\"T\n" +
-      "\017UserCreationDto\022\020\n\010username\030\001 \001(\t\022\020\n\010pa" +
-      "ssword\030\002 \001(\t\022\014\n\004name\030\003 \001(\t\022\017\n\007isAdmin\030\004 " +
-      "\001(\010\"A\n\rUserUpdateDto\022\020\n\010username\030\001 \001(\t\022\020" +
-      "\n\010password\030\002 \001(\t\022\014\n\004name\030\003 \001(\t\"2\n\014UserLo" +
-      "gInDto\022\020\n\010username\030\001 \001(\t\022\020\n\010password\030\002 \001" +
-      "(\t\" \n\010UserList\022\024\n\005users\030\001 \003(\0132\005.User\"$\n\010" +
-      "Category\022\n\n\002id\030\001 \001(\005\022\014\n\004name\030\002 \001(\t\"-\n\014Ca" +
-      "tegoryList\022\035\n\ncategories\030\001 \003(\0132\t.Categor" +
-      "y2\237\001\n\022CategoryController\022#\n\013addCategory\022" +
-      "\t.Category\032\t.Category\022#\n\016removeCategory\022" +
-      "\t.Category\032\006.Empty\022\037\n\006getAll\022\006.Empty\032\r.C" +
-      "ategoryList\022\036\n\006update\022\t.Category\032\t.Categ" +
-      "ory2\225\002\n\016FileController\022!\n\006upload\022\020.FileC" +
-      "reationDto\032\005.File\022\026\n\010download\022\003.Id\032\005.Fil" +
-      "e\022\"\n\006getAll\022\006.Empty\032\020.FileDisplayList\022\025\n" +
-      "\007getById\022\003.Id\032\005.File\022,\n\rgetByCategory\022\t." +
-      "Category\032\020.FileDisplayList\022\'\n\ngetByTitle" +
-      "\022\007.String\032\020.FileDisplayList\022\037\n\006update\022\016." +
-      "FileUpdateDto\032\005.File\022\025\n\006remove\022\003.Id\032\006.Em" +
-      "pty2\337\001\n\016UserController\022\037\n\rgetByUsername\022" +
-      "\007.String\032\005.User\022\025\n\007getById\022\003.Id\032\005.User\022\033" +
-      "\n\006getAll\022\006.Empty\032\t.UserList\022!\n\006create\022\020." +
-      "UserCreationDto\032\005.User\022\035\n\005logIn\022\r.UserLo" +
-      "gInDto\032\005.User\022\037\n\006update\022\016.UserUpdateDto\032" +
-      "\005.User\022\025\n\006remove\022\003.Id\032\006.EmptyB\037\n\035com.exa" +
-      "mple.sep3rest.protobufb\006proto3"
+      "\n\021logicserver.proto\" \n\rNullException\022\017\n\007" +
+      "message\030\001 \001(\t\"\007\n\005Empty\"\030\n\006String\022\016\n\006stri" +
+      "ng\030\001 \001(\t\"\020\n\002Id\022\n\n\002id\030\001 \001(\005\"\222\001\n\004File\022\r\n\005t" +
+      "itle\030\001 \001(\t\022\023\n\013description\030\002 \001(\t\022\r\n\005bytes" +
+      "\030\003 \001(\014\022\033\n\010category\030\004 \001(\0132\t.Category\022\031\n\nu" +
+      "ploadedBy\030\005 \001(\0132\005.User\022\023\n\013contentType\030\006 " +
+      "\001(\t\022\n\n\002id\030\007 \001(\005\"\221\001\n\017FileCreationDto\022\r\n\005t" +
+      "itle\030\001 \001(\t\022\023\n\013description\030\002 \001(\t\022\r\n\005bytes" +
+      "\030\003 \001(\014\022\033\n\010category\030\004 \001(\0132\t.Category\022\031\n\nu" +
+      "ploadedBy\030\005 \001(\0132\005.User\022\023\n\013contentType\030\006 " +
+      "\001(\t\"\\\n\rFileUpdateDto\022\r\n\005title\030\001 \001(\t\022\023\n\013d" +
+      "escription\030\002 \001(\t\022\033\n\010category\030\003 \001(\0132\t.Cat" +
+      "egory\022\n\n\002id\030\004 \001(\005\"\215\001\n\016FileDisplayDto\022\r\n\005" +
+      "title\030\001 \001(\t\022\023\n\013description\030\002 \001(\t\022\033\n\010cate" +
+      "gory\030\003 \001(\0132\t.Category\022\n\n\002id\030\004 \001(\005\022\031\n\nupl" +
+      "oadedBy\030\005 \001(\0132\005.User\022\023\n\013contentType\030\006 \001(" +
+      "\t\"/\n\017FileDownloadDto\022\r\n\005title\030\001 \001(\t\022\r\n\005b" +
+      "ytes\030\002 \001(\014\" \n\010FileList\022\024\n\005files\030\001 \003(\0132\005." +
+      "File\"1\n\017FileDisplayList\022\036\n\005files\030\001 \003(\0132\017" +
+      ".FileDisplayDto\"U\n\004User\022\020\n\010username\030\001 \001(" +
+      "\t\022\020\n\010password\030\002 \001(\t\022\014\n\004name\030\003 \001(\t\022\017\n\007isA" +
+      "dmin\030\004 \001(\010\022\n\n\002id\030\005 \001(\005\"T\n\017UserCreationDt" +
+      "o\022\020\n\010username\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\022\014\n" +
+      "\004name\030\003 \001(\t\022\017\n\007isAdmin\030\004 \001(\010\"A\n\rUserUpda" +
+      "teDto\022\020\n\010username\030\001 \001(\t\022\020\n\010password\030\002 \001(" +
+      "\t\022\014\n\004name\030\003 \001(\t\"2\n\014UserLogInDto\022\020\n\010usern" +
+      "ame\030\001 \001(\t\022\020\n\010password\030\002 \001(\t\" \n\010UserList\022" +
+      "\024\n\005users\030\001 \003(\0132\005.User\"$\n\010Category\022\n\n\002id\030" +
+      "\001 \001(\005\022\014\n\004name\030\002 \001(\t\"-\n\014CategoryList\022\035\n\nc" +
+      "ategories\030\001 \003(\0132\t.Category2\237\001\n\022CategoryC" +
+      "ontroller\022#\n\013addCategory\022\t.Category\032\t.Ca" +
+      "tegory\022#\n\016removeCategory\022\t.Category\032\006.Em" +
+      "pty\022\037\n\006getAll\022\006.Empty\032\r.CategoryList\022\036\n\006" +
+      "update\022\t.Category\032\t.Category2\240\002\n\016FileCon" +
+      "troller\022!\n\006upload\022\020.FileCreationDto\032\005.Fi" +
+      "le\022!\n\010download\022\003.Id\032\020.FileDownloadDto\022\"\n" +
+      "\006getAll\022\006.Empty\032\020.FileDisplayList\022\025\n\007get" +
+      "ById\022\003.Id\032\005.File\022,\n\rgetByCategory\022\t.Cate" +
+      "gory\032\020.FileDisplayList\022\'\n\ngetByTitle\022\007.S" +
+      "tring\032\020.FileDisplayList\022\037\n\006update\022\016.File" +
+      "UpdateDto\032\005.File\022\025\n\006remove\022\003.Id\032\006.Empty2" +
+      "\337\001\n\016UserController\022\037\n\rgetByUsername\022\007.St" +
+      "ring\032\005.User\022\025\n\007getById\022\003.Id\032\005.User\022\033\n\006ge" +
+      "tAll\022\006.Empty\032\t.UserList\022!\n\006create\022\020.User" +
+      "CreationDto\032\005.User\022\035\n\005logIn\022\r.UserLogInD" +
+      "to\032\005.User\022\037\n\006update\022\016.UserUpdateDto\032\005.Us" +
+      "er\022\025\n\006remove\022\003.Id\032\006.EmptyB\037\n\035com.example" +
+      ".sep3rest.protobufb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
         });
-    internal_static_Empty_descriptor =
+    internal_static_NullException_descriptor =
       getDescriptor().getMessageTypes().get(0);
+    internal_static_NullException_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_NullException_descriptor,
+        new java.lang.String[] { "Message", });
+    internal_static_Empty_descriptor =
+      getDescriptor().getMessageTypes().get(1);
     internal_static_Empty_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Empty_descriptor,
         new java.lang.String[] { });
     internal_static_String_descriptor =
-      getDescriptor().getMessageTypes().get(1);
+      getDescriptor().getMessageTypes().get(2);
     internal_static_String_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_String_descriptor,
         new java.lang.String[] { "String", });
     internal_static_Id_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_Id_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Id_descriptor,
         new java.lang.String[] { "Id", });
     internal_static_File_descriptor =
-      getDescriptor().getMessageTypes().get(3);
+      getDescriptor().getMessageTypes().get(4);
     internal_static_File_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_File_descriptor,
         new java.lang.String[] { "Title", "Description", "Bytes", "Category", "UploadedBy", "ContentType", "Id", });
     internal_static_FileCreationDto_descriptor =
-      getDescriptor().getMessageTypes().get(4);
+      getDescriptor().getMessageTypes().get(5);
     internal_static_FileCreationDto_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_FileCreationDto_descriptor,
         new java.lang.String[] { "Title", "Description", "Bytes", "Category", "UploadedBy", "ContentType", });
     internal_static_FileUpdateDto_descriptor =
-      getDescriptor().getMessageTypes().get(5);
+      getDescriptor().getMessageTypes().get(6);
     internal_static_FileUpdateDto_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_FileUpdateDto_descriptor,
         new java.lang.String[] { "Title", "Description", "Category", "Id", });
     internal_static_FileDisplayDto_descriptor =
-      getDescriptor().getMessageTypes().get(6);
+      getDescriptor().getMessageTypes().get(7);
     internal_static_FileDisplayDto_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_FileDisplayDto_descriptor,
-        new java.lang.String[] { "Title", "Description", "Category", "Id", "UploadedBy", });
+        new java.lang.String[] { "Title", "Description", "Category", "Id", "UploadedBy", "ContentType", });
+    internal_static_FileDownloadDto_descriptor =
+      getDescriptor().getMessageTypes().get(8);
+    internal_static_FileDownloadDto_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_FileDownloadDto_descriptor,
+        new java.lang.String[] { "Title", "Bytes", });
     internal_static_FileList_descriptor =
-      getDescriptor().getMessageTypes().get(7);
+      getDescriptor().getMessageTypes().get(9);
     internal_static_FileList_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_FileList_descriptor,
         new java.lang.String[] { "Files", });
     internal_static_FileDisplayList_descriptor =
-      getDescriptor().getMessageTypes().get(8);
+      getDescriptor().getMessageTypes().get(10);
     internal_static_FileDisplayList_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_FileDisplayList_descriptor,
         new java.lang.String[] { "Files", });
     internal_static_User_descriptor =
-      getDescriptor().getMessageTypes().get(9);
+      getDescriptor().getMessageTypes().get(11);
     internal_static_User_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_User_descriptor,
         new java.lang.String[] { "Username", "Password", "Name", "IsAdmin", "Id", });
     internal_static_UserCreationDto_descriptor =
-      getDescriptor().getMessageTypes().get(10);
+      getDescriptor().getMessageTypes().get(12);
     internal_static_UserCreationDto_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UserCreationDto_descriptor,
         new java.lang.String[] { "Username", "Password", "Name", "IsAdmin", });
     internal_static_UserUpdateDto_descriptor =
-      getDescriptor().getMessageTypes().get(11);
+      getDescriptor().getMessageTypes().get(13);
     internal_static_UserUpdateDto_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UserUpdateDto_descriptor,
         new java.lang.String[] { "Username", "Password", "Name", });
     internal_static_UserLogInDto_descriptor =
-      getDescriptor().getMessageTypes().get(12);
+      getDescriptor().getMessageTypes().get(14);
     internal_static_UserLogInDto_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UserLogInDto_descriptor,
         new java.lang.String[] { "Username", "Password", });
     internal_static_UserList_descriptor =
-      getDescriptor().getMessageTypes().get(13);
+      getDescriptor().getMessageTypes().get(15);
     internal_static_UserList_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_UserList_descriptor,
         new java.lang.String[] { "Users", });
     internal_static_Category_descriptor =
-      getDescriptor().getMessageTypes().get(14);
+      getDescriptor().getMessageTypes().get(16);
     internal_static_Category_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_Category_descriptor,
         new java.lang.String[] { "Id", "Name", });
     internal_static_CategoryList_descriptor =
-      getDescriptor().getMessageTypes().get(15);
+      getDescriptor().getMessageTypes().get(17);
     internal_static_CategoryList_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_CategoryList_descriptor,

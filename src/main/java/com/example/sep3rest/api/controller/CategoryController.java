@@ -50,7 +50,6 @@ public class CategoryController extends CategoryControllerGrpc.CategoryControlle
         responseObserver.onCompleted();
 
 
-
     }
 
     @Override

@@ -36,7 +36,7 @@ public class CategoryService  {
     }
 
     public ResponseEntity<List<Category>> getAllCategories(){
-        String url = "http://localhost:5285/category/getCategories";
+        String url = "http://localhost:5285/Category/getCategories";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<String> requestEntity = new HttpEntity<>("", headers);
@@ -45,13 +45,12 @@ public class CategoryService  {
         ObjectMapper objectMapper = new ObjectMapper();
         List<Category> categories = new ArrayList<>();
         try {
-            categories = objectMapper.readValue(responseJson, new TypeReference<List<Category>>() {});
+            categories = objectMapper.readValue(responseJson, new TypeReference<>() {
+            });
+            System.out.println(categories.get(1).getName());
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        //for testing purpose
-//        files.add(new FileDTO("TestTitle","Desc", "Category", new User(), new byte[0]));
-
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
