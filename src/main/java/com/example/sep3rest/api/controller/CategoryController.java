@@ -29,6 +29,10 @@ public class CategoryController extends CategoryControllerGrpc.CategoryControlle
     @Override
     public void addCategory(Logicserver.Category request, StreamObserver<Logicserver.Category> responseObserver) {
 
+    Category newCategory = categoryService.storeCategory(categoryLogic.protoToCategory(request)).getBody();
+    Logicserver.Category response = categoryLogic.categoryToProto(newCategory);
+    responseObserver.onNext(response);
+    responseObserver.onCompleted();
 
     }
 

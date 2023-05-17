@@ -34,4 +34,9 @@ public class CategoryLogicImpl implements CategoryLogic{
         }
         return response;
     }
+
+    @Override
+    public Logicserver.Category categoryToProto(Category category) {
+        return Logicserver.Category.newBuilder().setId(category.getId()).setName(category.getName()).build();
+    }
 }

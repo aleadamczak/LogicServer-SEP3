@@ -55,4 +55,12 @@ public class CategoryService  {
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
+    public void removeCategory(Category category){
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<Category> request = new HttpEntity<>(category, headers);
+        String url = "http://localhost:5285/category/uploadCategory";
+        restTemplate.delete(url, request, Category.class);
+    }
+
 }

@@ -15,4 +15,6 @@ public interface CategoryLogic {
     Category protoToCategory(Logicserver.Category category);
 
     Logicserver.CategoryList categoriesToProto(List<Category> categories);
+
+    Logicserver.Category categoryToProto(Category category);
 }
