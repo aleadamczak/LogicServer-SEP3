@@ -15,8 +15,9 @@ public class FileLogicImpl implements FileLogic {
     @Override
     public void validateFile(Logicserver.FileCreationDto file) throws Exception{
 
-        if (file.getTitle().isEmpty()) {
-            throw new Exception("Title cannot be empty");
+        if (file.getTitle().isEmpty() || file.getDescription().isEmpty()
+        || file.getBytes() == null || file.getCategory() == null) {
+            throw new Exception("You have not filled all the fields. TRY AGAIN.");
         }
 
         if (file.getTitle().length() < 3 || file.getTitle().length() > 30) {
@@ -72,7 +73,8 @@ public class FileLogicImpl implements FileLogic {
     public Logicserver.FileDownloadDto FileToProto(FileDownloadDto file) {
         Logicserver.FileDownloadDto response = Logicserver.FileDownloadDto.newBuilder()
                 .setBytes(ByteString.copyFrom(file.getBytes()))
-                .setTitle(file.getTitle()).build();
+                .setTitle(file.getTitle())
+                .setContentType(file.getContentType()).build();
         return response;
     }
 }

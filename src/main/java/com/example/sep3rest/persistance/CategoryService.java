@@ -47,7 +47,8 @@ public class CategoryService  {
         try {
             categories = objectMapper.readValue(responseJson, new TypeReference<>() {
             });
-            System.out.println(categories.get(1).getName());
+            if (!categories.isEmpty())
+                System.out.println(categories.get(0).getName());
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }

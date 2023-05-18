@@ -57,15 +57,12 @@ public class FileService {
         return response;
     }
 
-    public ResponseEntity<FileDownloadDto> downloadFile(int fileId) throws Exception{
+    public ResponseEntity<FileDownloadDto> downloadFile(int fileId) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<Integer> request = new HttpEntity<>(fileId, headers);
         String url = "http://localhost:5285/File/downloadFile?fileId={fileId}";
         ResponseEntity<FileDownloadDto> response = restTemplate.exchange(url, HttpMethod.GET, request, FileDownloadDto.class,fileId);
-        if (response.getStatusCode() != HttpStatus.OK) {
-            throw new RuntimeException(response.getBody().toString());
-        }
         return response;
 
     }
@@ -105,5 +102,18 @@ public class FileService {
 //        files.add(new FileDTO("TestTitle","Desc", "Category", new User(), new byte[0]));
 
         return files;
+    }
+
+    public ResponseEntity<FileDTO> delete(int id) throws Exception {
+        String url = "http://localhost:5285/file/" + id;
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<String> requestEntity = new HttpEntity<>("", headers);
+        ResponseEntity<FileDTO> response = restTemplate.exchange(url, HttpMethod.DELETE, requestEntity, FileDTO.class);
+
+        if (response.getStatusCode()!= HttpStatus.OK) {
+            throw new Exception("Data server error" + response.getStatusCode());
+        }
+        return response;
     }
 }

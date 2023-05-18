@@ -55,7 +55,6 @@ public class CategoryController extends CategoryControllerGrpc.CategoryControlle
         responseObserver.onNext(response);
         responseObserver.onCompleted();
 
-
     }
 
     @Override
