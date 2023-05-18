@@ -93,15 +93,12 @@ public class FileController extends FileControllerGrpc.FileControllerImplBase {
             if (e.getMessage().toString().equals("500 Internal Server Error: \"\"Object reference not set to an instance of an object.\"\""))
             {
                 String errorMessage = e.getMessage();
-                Logicserver.NullException nullException = Logicserver.NullException.newBuilder()
-                        .setMessage(errorMessage)
-                        .build();
                 responseObserver.onError(Status.INTERNAL.withDescription(errorMessage)
                         .asRuntimeException());
             }
-
-
-            throw new RuntimeException(e);
+            else {
+                System.out.println(e.getMessage());
+            }
         }
     }
 

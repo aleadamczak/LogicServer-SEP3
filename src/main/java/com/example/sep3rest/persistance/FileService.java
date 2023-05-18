@@ -57,15 +57,12 @@ public class FileService {
         return response;
     }
 
-    public ResponseEntity<FileDownloadDto> downloadFile(int fileId) throws Exception{
+    public ResponseEntity<FileDownloadDto> downloadFile(int fileId) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<Integer> request = new HttpEntity<>(fileId, headers);
         String url = "http://localhost:5285/File/downloadFile?fileId={fileId}";
         ResponseEntity<FileDownloadDto> response = restTemplate.exchange(url, HttpMethod.GET, request, FileDownloadDto.class,fileId);
-        if (response.getStatusCode() != HttpStatus.OK) {
-            throw new RuntimeException(response.getBody().toString());
-        }
         return response;
 
     }
