@@ -29,11 +29,21 @@ public class CategoryController extends CategoryControllerGrpc.CategoryControlle
     @Override
     public void addCategory(Logicserver.Category request, StreamObserver<Logicserver.Category> responseObserver) {
 
+    Category newCategory = categoryService.storeCategory(categoryLogic.protoToCategory(request)).getBody();
+    Logicserver.Category response = categoryLogic.categoryToProto(newCategory);
+    responseObserver.onNext(response);
+    responseObserver.onCompleted();
 
     }
 
     @Override
     public void removeCategory(Logicserver.Category request, StreamObserver<Logicserver.Empty> responseObserver) {
+
+        Category toDeleteCategory = categoryService.removeCategory(categoryLogic.protoToCategory(request)).getBody();
+        Logicserver.Category response = categoryLogic.categoryToProto(toDeleteCategory);
+        responseObserver.onNext(Logicserver.Empty.newBuilder().build());
+        responseObserver.onCompleted();
+
 
     }
 

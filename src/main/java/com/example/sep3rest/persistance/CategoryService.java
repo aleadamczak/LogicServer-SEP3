@@ -55,4 +55,18 @@ public class CategoryService  {
         return new ResponseEntity<>(categories, HttpStatus.OK);
     }
 
+    public ResponseEntity<Category> removeCategory(Category category){
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<Category> request = new HttpEntity<>(category, headers);
+        String url = "http://localhost:5285/category/deleteCategory";
+        ResponseEntity<Category> response = restTemplate.exchange(url, HttpMethod.DELETE, request, Category.class);
+        if (response.getStatusCode() != HttpStatus.OK) {
+            throw new RuntimeException();
+        }
+
+        return response;
+
+    }
+
 }

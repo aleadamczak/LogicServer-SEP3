@@ -43,4 +43,9 @@ public class CategoryLogicImpl implements CategoryLogic{
         Logicserver.CategoryList response = responseBuilder.build();
         return response;
     }
+
+    @Override
+    public Logicserver.Category categoryToProto(Category category) {
+        return Logicserver.Category.newBuilder().setId(category.getId()).setName(category.getName()).build();
+    }
 }

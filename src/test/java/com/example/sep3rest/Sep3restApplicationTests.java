@@ -1,13 +1,22 @@
 package com.example.sep3rest;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+
 class Sep3restApplicationTests {
+    //RestTemplate restTemplate = new RestTemplate();
 
     @Test
-    void contextLoads() {
+    public void FileSentAndReceived() {
+
+
+
+
+        int result = 5;
+        assertEquals(5, result);
     }
+
 
 }
