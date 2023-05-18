@@ -58,7 +58,7 @@ public class CategoryService  {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<Category> request = new HttpEntity<>(category, headers);
-        String url = "http://localhost:5285/category/uploadCategory";
+        String url = "http://localhost:5285/category/deleteCategory";
         ResponseEntity<Category> response = restTemplate.exchange(url, HttpMethod.DELETE, request, Category.class);
         if (response.getStatusCode() != HttpStatus.OK) {
             throw new RuntimeException();

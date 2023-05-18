@@ -39,6 +39,12 @@ public class CategoryController extends CategoryControllerGrpc.CategoryControlle
     @Override
     public void removeCategory(Logicserver.Category request, StreamObserver<Logicserver.Empty> responseObserver) {
 
+        Category toDeleteCategory = categoryService.removeCategory(categoryLogic.protoToCategory(request)).getBody();
+        Logicserver.Category response = categoryLogic.categoryToProto(toDeleteCategory);
+        responseObserver.onNext(Logicserver.Empty.newBuilder().build());
+        responseObserver.onCompleted();
+
+
     }
 
     @Override
