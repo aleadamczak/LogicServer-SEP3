@@ -4,7 +4,6 @@ import com.example.sep3rest.api.model.domain.File;
 import com.example.sep3rest.api.model.domain.FileCreationDTO;
 import com.example.sep3rest.api.model.domain.FileDTO;
 import com.example.sep3rest.api.model.domain.FileDownloadDto;
-import com.example.sep3rest.property.FileStorageProperties;
 
 import com.example.sep3rest.protobuf.FileControllerGrpc;
 import com.example.sep3rest.protobuf.Logicserver;

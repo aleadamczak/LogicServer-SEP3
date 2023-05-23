@@ -13,7 +13,6 @@ import java.util.stream.StreamSupport;
 public class CategoryLogicImpl implements CategoryLogic{
 
 
-
     @Override
     public Category protoToCategory(Logicserver.Category category) {
         return new Category(category.getName(), category.getId());
@@ -25,11 +24,6 @@ public class CategoryLogicImpl implements CategoryLogic{
 
         Logicserver.CategoryList.Builder responseBuilder = Logicserver.CategoryList.newBuilder();
         for (int i = 0; i < categories.size() ; i++) {
-
-//            Category current = categories.get(i);
-//            Logicserver.Category category = Logicserver.Category.newBuilder().setId(current.getId()).setName(current.getName()).build();
-//
-//            response.newBuilder().setCategories(i, category).build();
 
             Category current = categories.get(i);
             Logicserver.Category category = Logicserver.Category.newBuilder()

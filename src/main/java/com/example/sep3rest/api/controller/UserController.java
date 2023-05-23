@@ -1,6 +1,7 @@
 package com.example.sep3rest.api.controller;
 
 import com.example.sep3rest.api.model.domain.User;
+import com.example.sep3rest.api.model.domain.UserDisplayDto;
 import com.example.sep3rest.api.model.logic.UserLogic;
 import com.example.sep3rest.api.model.logic.UserLogicImpl;
 import com.example.sep3rest.persistance.UserService;
@@ -9,16 +10,12 @@ import com.example.sep3rest.protobuf.UserControllerGrpc;
 import io.grpc.Status;
 import io.grpc.reflection.v1alpha.ErrorResponse;
 import io.grpc.stub.StreamObserver;
-import org.checkerframework.checker.units.qual.A;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
 
 @Service
 public class UserController extends UserControllerGrpc.UserControllerImplBase {
+
 
     @Autowired
     private UserService service = new UserService();
@@ -56,6 +53,14 @@ public class UserController extends UserControllerGrpc.UserControllerImplBase {
     }
 
     @Override
+    public void getAllDisplay(Logicserver.Empty request, StreamObserver<Logicserver.UserDisplayDtoList> responseObserver) {
+        Logicserver.UserDisplayDtoList userDisplayDtoList = userLogic.getAll();
+        responseObserver.onNext(userDisplayDtoList);
+        responseObserver.onCompleted();
+    }
+
+
+    @Override
     public void getById(Logicserver.Id request, StreamObserver<Logicserver.User> responseObserver) {
 
     }
@@ -84,6 +89,8 @@ public class UserController extends UserControllerGrpc.UserControllerImplBase {
     public void remove(Logicserver.Id request, StreamObserver<Logicserver.Empty> responseObserver) {
 
     }
+
+
 
     //
 //

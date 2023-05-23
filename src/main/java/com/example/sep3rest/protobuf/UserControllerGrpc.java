@@ -231,6 +231,37 @@ public final class UserControllerGrpc {
     return getRemoveMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.example.sep3rest.protobuf.Logicserver.Empty,
+      com.example.sep3rest.protobuf.Logicserver.UserDisplayDtoList> getGetAllDisplayMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "getAllDisplay",
+      requestType = com.example.sep3rest.protobuf.Logicserver.Empty.class,
+      responseType = com.example.sep3rest.protobuf.Logicserver.UserDisplayDtoList.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
+  public static io.grpc.MethodDescriptor<com.example.sep3rest.protobuf.Logicserver.Empty,
+      com.example.sep3rest.protobuf.Logicserver.UserDisplayDtoList> getGetAllDisplayMethod() {
+    io.grpc.MethodDescriptor<com.example.sep3rest.protobuf.Logicserver.Empty, com.example.sep3rest.protobuf.Logicserver.UserDisplayDtoList> getGetAllDisplayMethod;
+    if ((getGetAllDisplayMethod = UserControllerGrpc.getGetAllDisplayMethod) == null) {
+      synchronized (UserControllerGrpc.class) {
+        if ((getGetAllDisplayMethod = UserControllerGrpc.getGetAllDisplayMethod) == null) {
+          UserControllerGrpc.getGetAllDisplayMethod = getGetAllDisplayMethod =
+              io.grpc.MethodDescriptor.<com.example.sep3rest.protobuf.Logicserver.Empty, com.example.sep3rest.protobuf.Logicserver.UserDisplayDtoList>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "getAllDisplay"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.example.sep3rest.protobuf.Logicserver.Empty.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.example.sep3rest.protobuf.Logicserver.UserDisplayDtoList.getDefaultInstance()))
+              .setSchemaDescriptor(new UserControllerMethodDescriptorSupplier("getAllDisplay"))
+              .build();
+        }
+      }
+    }
+    return getGetAllDisplayMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -328,6 +359,13 @@ public final class UserControllerGrpc {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getRemoveMethod(), responseObserver);
     }
 
+    /**
+     */
+    public void getAllDisplay(com.example.sep3rest.protobuf.Logicserver.Empty request,
+        io.grpc.stub.StreamObserver<com.example.sep3rest.protobuf.Logicserver.UserDisplayDtoList> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetAllDisplayMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -379,6 +417,13 @@ public final class UserControllerGrpc {
                 com.example.sep3rest.protobuf.Logicserver.Id,
                 com.example.sep3rest.protobuf.Logicserver.Empty>(
                   this, METHODID_REMOVE)))
+          .addMethod(
+            getGetAllDisplayMethod(),
+            io.grpc.stub.ServerCalls.asyncUnaryCall(
+              new MethodHandlers<
+                com.example.sep3rest.protobuf.Logicserver.Empty,
+                com.example.sep3rest.protobuf.Logicserver.UserDisplayDtoList>(
+                  this, METHODID_GET_ALL_DISPLAY)))
           .build();
     }
   }
@@ -452,6 +497,14 @@ public final class UserControllerGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getRemoveMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     */
+    public void getAllDisplay(com.example.sep3rest.protobuf.Logicserver.Empty request,
+        io.grpc.stub.StreamObserver<com.example.sep3rest.protobuf.Logicserver.UserDisplayDtoList> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncUnaryCall(
+          getChannel().newCall(getGetAllDisplayMethod(), getCallOptions()), request, responseObserver);
+    }
   }
 
   /**
@@ -515,6 +568,13 @@ public final class UserControllerGrpc {
     public com.example.sep3rest.protobuf.Logicserver.Empty remove(com.example.sep3rest.protobuf.Logicserver.Id request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getRemoveMethod(), getCallOptions(), request);
+    }
+
+    /**
+     */
+    public com.example.sep3rest.protobuf.Logicserver.UserDisplayDtoList getAllDisplay(com.example.sep3rest.protobuf.Logicserver.Empty request) {
+      return io.grpc.stub.ClientCalls.blockingUnaryCall(
+          getChannel(), getGetAllDisplayMethod(), getCallOptions(), request);
     }
   }
 
@@ -587,6 +647,14 @@ public final class UserControllerGrpc {
       return io.grpc.stub.ClientCalls.futureUnaryCall(
           getChannel().newCall(getRemoveMethod(), getCallOptions()), request);
     }
+
+    /**
+     */
+    public com.google.common.util.concurrent.ListenableFuture<com.example.sep3rest.protobuf.Logicserver.UserDisplayDtoList> getAllDisplay(
+        com.example.sep3rest.protobuf.Logicserver.Empty request) {
+      return io.grpc.stub.ClientCalls.futureUnaryCall(
+          getChannel().newCall(getGetAllDisplayMethod(), getCallOptions()), request);
+    }
   }
 
   private static final int METHODID_GET_BY_USERNAME = 0;
@@ -596,6 +664,7 @@ public final class UserControllerGrpc {
   private static final int METHODID_LOG_IN = 4;
   private static final int METHODID_UPDATE = 5;
   private static final int METHODID_REMOVE = 6;
+  private static final int METHODID_GET_ALL_DISPLAY = 7;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -641,6 +710,10 @@ public final class UserControllerGrpc {
         case METHODID_REMOVE:
           serviceImpl.remove((com.example.sep3rest.protobuf.Logicserver.Id) request,
               (io.grpc.stub.StreamObserver<com.example.sep3rest.protobuf.Logicserver.Empty>) responseObserver);
+          break;
+        case METHODID_GET_ALL_DISPLAY:
+          serviceImpl.getAllDisplay((com.example.sep3rest.protobuf.Logicserver.Empty) request,
+              (io.grpc.stub.StreamObserver<com.example.sep3rest.protobuf.Logicserver.UserDisplayDtoList>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -710,6 +783,7 @@ public final class UserControllerGrpc {
               .addMethod(getLogInMethod())
               .addMethod(getUpdateMethod())
               .addMethod(getRemoveMethod())
+              .addMethod(getGetAllDisplayMethod())
               .build();
         }
       }
