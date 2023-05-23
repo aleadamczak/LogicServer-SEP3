@@ -1,8 +1,11 @@
 package com.example.sep3rest.persistance;
 
 import com.example.sep3rest.api.model.domain.FileDTO;
+
 import com.example.sep3rest.api.model.domain.User;
 import com.example.sep3rest.api.model.domain.UserDisplayDto;
+import com.example.sep3rest.api.model.domain.UserCreationDto;
+import com.example.sep3rest.api.model.domain.UserLoginDto;
 import com.example.sep3rest.protobuf.UserControllerGrpc;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -39,14 +42,40 @@ public class UserService {
         System.out.println(url);
         ResponseEntity<User> response = restTemplate.getForEntity(url, User.class);
         User user = response.getBody();
-//        if (user == null) {
-//            throw  new Exception("User not found. It is not possible to upload files without being registered");
-//        }
+
         if (response.getStatusCode() != HttpStatus.OK) {
            return response;
         }
 
        else return ResponseEntity.status(HttpStatus.OK).body(user);
+    }
+
+    public ResponseEntity<UserCreationDto> createUser(UserCreationDto user) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<UserCreationDto> request = new HttpEntity<>(user, headers);
+        String url = "http://localhost:5285/users/createUser";
+        ResponseEntity<UserCreationDto> response = restTemplate.postForEntity(url, request, UserCreationDto.class);
+
+        if (response.getStatusCode() != HttpStatus.CREATED) {
+            throw new RuntimeException();
+        }
+        return response;
+    }
+
+    public ResponseEntity<User> Login(UserLoginDto userLoginDto)  {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        String url = "http://localhost:5285/users/login/" + userLoginDto.getUsername() +"."+ userLoginDto.getPassword();
+        System.out.println(url);
+        ResponseEntity<User> response = restTemplate.getForEntity(url, User.class);
+        User user = response.getBody();
+
+        if (response.getStatusCode() != HttpStatus.OK) {
+            return response;
+        }
+
+        else return ResponseEntity.status(HttpStatus.OK).body(user);
     }
 
     public ResponseEntity<List<UserDisplayDto>> getAll() {
