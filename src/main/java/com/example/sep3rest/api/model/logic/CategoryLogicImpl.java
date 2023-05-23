@@ -2,13 +2,9 @@ package com.example.sep3rest.api.model.logic;
 
 import com.example.sep3rest.api.model.domain.Category;
 import com.example.sep3rest.protobuf.Logicserver;
-import org.apache.juli.logging.Log;
 import org.springframework.stereotype.Component;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
+
 @Component
 public class CategoryLogicImpl implements CategoryLogic{
 

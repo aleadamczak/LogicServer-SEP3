@@ -1,5 +1,7 @@
 package com.example.sep3rest.api.model.logic;
 
+import com.example.sep3rest.api.model.DTOs.PrivateFileCreationDTO;
+import com.example.sep3rest.api.model.DTOs.PrivateFileDisplayDto;
 import com.example.sep3rest.api.model.domain.*;
 import com.example.sep3rest.protobuf.Logicserver;
 import com.google.protobuf.ByteString;
@@ -71,11 +73,35 @@ public class PrivateFileLogicImpl implements PrivateFileLogic{
                 .setContentType(file.getContentType()).setHaveAccess(userList).build();
     }
 
+    @Override
+    public Logicserver.PrivateFileDisplayDtoList filesToProto(List<PrivateFileDisplayDto> privateFileDisplayDtoList) {
+        Logicserver.PrivateFileDisplayDtoList.Builder responseBuilder = Logicserver.PrivateFileDisplayDtoList.newBuilder();
+        for (int i = 0; i < privateFileDisplayDtoList.size() ; i++) {
+
+            PrivateFileDisplayDto current = privateFileDisplayDtoList.get(i);
+            User currentUser = current.getUploadedBy();
+            Logicserver.PrivateFileDisplayDto currentProto = Logicserver.PrivateFileDisplayDto.newBuilder()
+                            .setId(current.getId()).setUploadedBy(userToProto(currentUser))
+                            .setContentType(current.getContentType())
+                                    .setTitle(current.getTitle()).build();
+            responseBuilder.addPrivateFiles(currentProto);
+
+        }
+        Logicserver.PrivateFileDisplayDtoList response = responseBuilder.build();
+        return response;
+    }
+
     private User protoToUser(Logicserver.User user) {
 
-    return new User(user.getUsername(),
-            user.getPassword(),user.getName(),
-            user.getIsAdmin(), user.getId());
+        return new User(user.getUsername(),
+                user.getPassword(),user.getName(),
+                user.getIsAdmin(), user.getId());
+    }
+
+    private Logicserver.User userToProto(User user) {
+        return Logicserver.User.newBuilder().setPassword(user.getPassword())
+                .setUsername(user.getUsername()).setIsAdmin(user.isAdmin())
+                .setId(user.getId()).setName(user.getName()).build();
     }
 
 

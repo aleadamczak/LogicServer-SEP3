@@ -9,4 +9,6 @@ public interface UserLogic {
 
     User isUserRegistered(String username) throws Exception;
     Logicserver.UserDisplayDtoList getAll();
+
+    User protoToUser(Logicserver.User user);
 }

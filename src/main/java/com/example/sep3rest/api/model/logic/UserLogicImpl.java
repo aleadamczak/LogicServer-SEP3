@@ -1,9 +1,7 @@
 package com.example.sep3rest.api.model.logic;
 
-import com.example.sep3rest.api.model.domain.Category;
 import com.example.sep3rest.api.model.domain.User;
-import com.example.sep3rest.api.model.domain.UserDisplayDto;
-import com.example.sep3rest.persistance.FileService;
+import com.example.sep3rest.api.model.DTOs.UserDisplayDto;
 import com.example.sep3rest.persistance.UserService;
 import com.example.sep3rest.protobuf.Logicserver;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +44,12 @@ public class UserLogicImpl implements UserLogic{
         }
         Logicserver.UserDisplayDtoList response = responseBuilder.build();
         return response;
+    }
+
+    @Override
+    public User protoToUser(Logicserver.User user) {
+        return new User(user.getUsername(), user.getPassword(), user.getName()
+        , user.getIsAdmin(), user.getId());
     }
 
 }

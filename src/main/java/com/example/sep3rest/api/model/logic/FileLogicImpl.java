@@ -1,9 +1,10 @@
 package com.example.sep3rest.api.model.logic;
 
+import com.example.sep3rest.api.model.DTOs.FileCreationDTO;
+import com.example.sep3rest.api.model.DTOs.FileDownloadDto;
 import com.example.sep3rest.api.model.domain.*;
 import com.example.sep3rest.protobuf.Logicserver;
 import com.google.protobuf.ByteString;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 
@@ -47,7 +48,7 @@ public class FileLogicImpl implements FileLogic {
     }
 
     @Override
-    public Logicserver.File FileToProto(FileDTO file) {
+    public Logicserver.File FileToProto(File file) {
         Logicserver.Category category = Logicserver.Category.newBuilder()
             .setName(file.getCategory().getName())
             .build();

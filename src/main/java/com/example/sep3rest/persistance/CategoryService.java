@@ -1,8 +1,6 @@
 package com.example.sep3rest.persistance;
 
 import com.example.sep3rest.api.model.domain.Category;
-import com.example.sep3rest.api.model.domain.FileDTO;
-import com.example.sep3rest.protobuf.CategoryControllerGrpc;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
