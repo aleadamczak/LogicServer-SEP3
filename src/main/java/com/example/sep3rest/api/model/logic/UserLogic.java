@@ -8,4 +8,5 @@ import org.springframework.stereotype.Component;
 public interface UserLogic {
 
     User isUserRegistered(String username) throws Exception;
+    Logicserver.UserDisplayDtoList getAll();
 }
