@@ -1,6 +1,8 @@
 package com.example.sep3rest.api.controller;
 
+import com.example.sep3rest.api.model.domain.FileDTO;
 import com.example.sep3rest.api.model.domain.User;
+import com.example.sep3rest.api.model.domain.UserCreationDto;
 import com.example.sep3rest.api.model.domain.UserDisplayDto;
 import com.example.sep3rest.api.model.logic.UserLogic;
 import com.example.sep3rest.api.model.logic.UserLogicImpl;
@@ -18,7 +20,7 @@ public class UserController extends UserControllerGrpc.UserControllerImplBase {
 
 
     @Autowired
-    private UserService service = new UserService();
+    private UserService userService = new UserService();
 
     @Autowired
     private UserLogic userLogic = new UserLogicImpl();
@@ -26,11 +28,12 @@ public class UserController extends UserControllerGrpc.UserControllerImplBase {
     @Override
     public void getByUsername(Logicserver.String request, StreamObserver<Logicserver.User> responseObserver) {
         String username = request.getString();
-        System.out.println("In this method bro");
         //get the user from the data server
         User user = null;
         try {
             user = userLogic.isUserRegistered(username);
+
+
             // create the response
             Logicserver.User response = Logicserver.User.newBuilder().setId(user.getId())
                     .setUsername(user.getUsername()).setPassword(user.getPassword())
@@ -39,6 +42,7 @@ public class UserController extends UserControllerGrpc.UserControllerImplBase {
             responseObserver.onNext(response);
             responseObserver.onCompleted();
         } catch (Exception e) {
+            System.out.println("Exception in method getByUsername");
             System.out.println(e.getMessage());
             String errorMessage = e.getMessage();
             ErrorResponse response = ErrorResponse.newBuilder()
@@ -53,14 +57,6 @@ public class UserController extends UserControllerGrpc.UserControllerImplBase {
     }
 
     @Override
-    public void getAllDisplay(Logicserver.Empty request, StreamObserver<Logicserver.UserDisplayDtoList> responseObserver) {
-        Logicserver.UserDisplayDtoList userDisplayDtoList = userLogic.getAll();
-        responseObserver.onNext(userDisplayDtoList);
-        responseObserver.onCompleted();
-    }
-
-
-    @Override
     public void getById(Logicserver.Id request, StreamObserver<Logicserver.User> responseObserver) {
 
     }
@@ -73,11 +69,60 @@ public class UserController extends UserControllerGrpc.UserControllerImplBase {
     @Override
     public void create(Logicserver.UserCreationDto request, StreamObserver<Logicserver.User> responseObserver) {
 
+        try {
+
+            // first validate if the received object fulfills what it needs to :)
+//            userLogic.validateUser(request);
+
+
+            //convert proto file to domain object and then send to the data server
+            UserCreationDto newUser = userService.createUser(userLogic.ProtoToUser(request)).getBody();
+
+            //construct the proto response from the retrieved file
+            Logicserver.User userResponse = Logicserver.User.newBuilder().setName(newUser.getName())
+                .setUsername(newUser.getUsername()).setIsAdmin(newUser.isAdmin())
+                .setPassword(newUser.getPassword()).build();
+
+            responseObserver.onNext(userResponse);
+            responseObserver.onCompleted();
+
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     public void logIn(Logicserver.UserLogInDto request, StreamObserver<Logicserver.User> responseObserver) {
 
+        User user;
+        try {
+            user = userService.Login(userLogic.ProtoToUser(request)).getBody();
+
+            if (user.getPassword().equals(request.getPassword()))
+            {
+                // create the response
+                Logicserver.User response = Logicserver.User.newBuilder().setId(user.getId()).setUsername(user.getUsername())
+                    .setPassword(user.getPassword()).setIsAdmin(user.isAdmin()).setName(user.getName()).build();
+                //send the response
+                responseObserver.onNext(response);
+                responseObserver.onCompleted();
+            }
+            else
+            {
+                System.out.println("Wrong password");
+            }
+        } catch (Exception e) {
+            System.out.println("Exception in method Login");
+            System.out.println(e.getMessage());
+            String errorMessage = e.getMessage();
+
+            // Send the error response
+            responseObserver.onError(
+                Status.INTERNAL
+                    .withDescription(errorMessage)
+                    .asRuntimeException());
+        }
     }
 
     @Override

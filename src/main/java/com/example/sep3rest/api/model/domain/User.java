@@ -1,6 +1,4 @@
 package com.example.sep3rest.api.model.domain;
-
-import com.fasterxml.jackson.annotation.JacksonInject;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
