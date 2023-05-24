@@ -1,9 +1,9 @@
 package com.example.sep3rest.api.controller;
 
-import com.example.sep3rest.api.model.domain.FileDTO;
+import com.example.sep3rest.api.model.domain.File;
 import com.example.sep3rest.api.model.domain.User;
-import com.example.sep3rest.api.model.domain.UserCreationDto;
-import com.example.sep3rest.api.model.domain.UserDisplayDto;
+import com.example.sep3rest.api.model.DTOs.UserCreationDto;
+import com.example.sep3rest.api.model.DTOs.UserDisplayDto;
 import com.example.sep3rest.api.model.logic.UserLogic;
 import com.example.sep3rest.api.model.logic.UserLogicImpl;
 import com.example.sep3rest.persistance.UserService;

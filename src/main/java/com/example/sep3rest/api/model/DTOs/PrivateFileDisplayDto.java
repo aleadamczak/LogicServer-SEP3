@@ -10,7 +10,7 @@ public class PrivateFileDisplayDto {
 
     private String title;
     private String contentType;
-    private User uploadedBy;
+//    private User uploadedBy;
     private byte[] bytes;
 
     private int id;
@@ -24,7 +24,7 @@ public class PrivateFileDisplayDto {
             @JsonProperty("id") int id) {
         this.title = title;
         this.contentType = contentType;
-        this.uploadedBy = uploadedBy;
+//        this.uploadedBy = uploadedBy;
         this.bytes = bytes;
         this.id = id;
     }
@@ -45,13 +45,13 @@ public class PrivateFileDisplayDto {
         this.contentType = contentType;
     }
 
-    public User getUploadedBy() {
-        return uploadedBy;
-    }
-
-    public void setUploadedBy(User uploadedBy) {
-        this.uploadedBy = uploadedBy;
-    }
+//    public User getUploadedBy() {
+//        return uploadedBy;
+//    }
+//
+//    public void setUploadedBy(User uploadedBy) {
+//        this.uploadedBy = uploadedBy;
+//    }
 
     public byte[] getBytes() {
         return bytes;

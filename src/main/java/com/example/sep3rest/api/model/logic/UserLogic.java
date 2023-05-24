@@ -1,8 +1,8 @@
 package com.example.sep3rest.api.model.logic;
 
 import com.example.sep3rest.api.model.domain.User;
-import com.example.sep3rest.api.model.domain.UserCreationDto;
-import com.example.sep3rest.api.model.domain.UserLoginDto;
+import com.example.sep3rest.api.model.DTOs.UserCreationDto;
+import com.example.sep3rest.api.model.DTOs.UserLoginDto;
 import com.example.sep3rest.protobuf.Logicserver;
 import org.springframework.stereotype.Component;
 

@@ -1,8 +1,10 @@
 package com.example.sep3rest.persistance;
 
-import com.example.sep3rest.api.model.domain.FileDTO;
+import com.example.sep3rest.api.model.DTOs.UserCreationDto;
+import com.example.sep3rest.api.model.DTOs.UserLoginDto;
+import com.example.sep3rest.api.model.domain.File;
 import com.example.sep3rest.api.model.domain.User;
-import com.example.sep3rest.api.model.domain.UserDisplayDto;
+import com.example.sep3rest.api.model.DTOs.UserDisplayDto;
 import com.example.sep3rest.protobuf.UserControllerGrpc;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;

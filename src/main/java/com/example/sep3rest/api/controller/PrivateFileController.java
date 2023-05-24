@@ -35,6 +35,22 @@ public class PrivateFileController extends PrivateFileControllerGrpc.PrivateFile
 
         try {
             privateFileLogic.validateFile(request);
+            try {
+                PrivateFile privateFile =  privateFileService.storeFile(privateFileLogic.protoToFile(request)).getBody();
+                responseObserver.onNext(privateFileLogic.FileToProto(privateFile));
+                responseObserver.onCompleted();
+            }
+            catch (Exception e) {
+                String errorMessage = e.getMessage();
+                ErrorResponse response = ErrorResponse.newBuilder()
+                        .setErrorMessage(errorMessage)
+                        .build();
+                responseObserver.onError(
+                        Status.INTERNAL
+                                .withDescription(errorMessage)
+                                .asRuntimeException());
+            }
+
         } catch (Exception e) {
             String errorMessage = e.getMessage();
             ErrorResponse response = ErrorResponse.newBuilder()
@@ -45,21 +61,7 @@ public class PrivateFileController extends PrivateFileControllerGrpc.PrivateFile
                             .withDescription(errorMessage)
                             .asRuntimeException());
         }
-        try {
-           PrivateFile privateFile =  privateFileService.storeFile(privateFileLogic.protoToFile(request)).getBody();
-           responseObserver.onNext(privateFileLogic.FileToProto(privateFile));
-           responseObserver.onCompleted();
-        }
-        catch (Exception e) {
-            String errorMessage = e.getMessage();
-            ErrorResponse response = ErrorResponse.newBuilder()
-                    .setErrorMessage(errorMessage)
-                    .build();
-            responseObserver.onError(
-                    Status.INTERNAL
-                            .withDescription(errorMessage)
-                            .asRuntimeException());
-        }
+
     }
 
 

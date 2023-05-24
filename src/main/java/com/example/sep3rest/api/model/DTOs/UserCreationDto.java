@@ -1,4 +1,4 @@
-package com.example.sep3rest.api.model.domain;
+package com.example.sep3rest.api.model.DTOs;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 

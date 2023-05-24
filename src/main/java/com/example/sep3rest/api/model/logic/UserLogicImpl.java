@@ -1,8 +1,10 @@
 package com.example.sep3rest.api.model.logic;
 
+import com.example.sep3rest.api.model.DTOs.UserCreationDto;
+import com.example.sep3rest.api.model.DTOs.UserLoginDto;
 import com.example.sep3rest.api.model.domain.Category;
 import com.example.sep3rest.api.model.domain.User;
-import com.example.sep3rest.api.model.domain.UserDisplayDto;
+import com.example.sep3rest.api.model.DTOs.UserDisplayDto;
 import com.example.sep3rest.persistance.FileService;
 import com.example.sep3rest.persistance.UserService;
 import com.example.sep3rest.protobuf.Logicserver;

@@ -79,9 +79,9 @@ public class PrivateFileLogicImpl implements PrivateFileLogic{
         for (int i = 0; i < privateFileDisplayDtoList.size() ; i++) {
 
             PrivateFileDisplayDto current = privateFileDisplayDtoList.get(i);
-            User currentUser = current.getUploadedBy();
+//            User currentUser = current.getUploadedBy();
             Logicserver.PrivateFileDisplayDto currentProto = Logicserver.PrivateFileDisplayDto.newBuilder()
-                            .setId(current.getId()).setUploadedBy(userToProto(currentUser))
+                            .setId(current.getId())
                             .setContentType(current.getContentType())
                                     .setTitle(current.getTitle()).build();
             responseBuilder.addPrivateFiles(currentProto);
