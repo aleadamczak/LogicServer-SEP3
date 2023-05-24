@@ -1,5 +1,7 @@
-package com.example.sep3rest.api.model.domain;
+package com.example.sep3rest.api.model.DTOs;
 
+import com.example.sep3rest.api.model.domain.Category;
+import com.example.sep3rest.api.model.domain.User;
 import com.example.sep3rest.protobuf.Logicserver;
 
 public class FileCreationDTO {

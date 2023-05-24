@@ -1,26 +1,16 @@
 package com.example.sep3rest.persistance;
 
+import com.example.sep3rest.api.model.DTOs.FileCreationDTO;
 import com.example.sep3rest.api.model.domain.File;
-import com.example.sep3rest.api.model.domain.FileCreationDTO;
-import com.example.sep3rest.api.model.domain.FileDTO;
-import com.example.sep3rest.api.model.domain.FileDownloadDto;
+import com.example.sep3rest.api.model.DTOs.FileDownloadDto;
 
-import com.example.sep3rest.protobuf.FileControllerGrpc;
-import com.example.sep3rest.protobuf.Logicserver;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.UrlResource;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
-import java.net.MalformedURLException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,12 +34,12 @@ public class FileService {
 //    }
 
     // method that sends the file to the data server
-    public ResponseEntity<FileDTO> storeFile(FileCreationDTO file) {
+    public ResponseEntity<File> storeFile(FileCreationDTO file) {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<FileCreationDTO> request = new HttpEntity<>(file, headers);
         String url = "http://localhost:5285/file/uploadFile";
-        ResponseEntity<FileDTO> response = restTemplate.postForEntity(url, request, FileDTO.class);
+        ResponseEntity<File> response = restTemplate.postForEntity(url, request, File.class);
         if (response.getStatusCode() != HttpStatus.CREATED) {
             throw new RuntimeException();
         }
@@ -83,7 +73,7 @@ public class FileService {
 //        }
 //    }
 
-    public List<FileDTO> getAllFiles() {
+    public List<File> getAllFiles() {
         String url = "http://localhost:5285/file/getAllFileDtos";
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -91,9 +81,9 @@ public class FileService {
         ResponseEntity<String> responseEntity = restTemplate.exchange(url, HttpMethod.GET, requestEntity, String.class);
         String responseJson = responseEntity.getBody();
         ObjectMapper objectMapper = new ObjectMapper();
-        List<FileDTO> files = new ArrayList<>();
+        List<File> files = new ArrayList<>();
         try {
-            files = objectMapper.readValue(responseJson, new TypeReference<List<FileDTO>>() {});
+            files = objectMapper.readValue(responseJson, new TypeReference<List<File>>() {});
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
@@ -103,12 +93,12 @@ public class FileService {
         return files;
     }
 
-    public ResponseEntity<FileDTO> delete(int id) throws Exception {
+    public ResponseEntity<File> delete(int id) throws Exception {
         String url = "http://localhost:5285/file/" + id;
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<String> requestEntity = new HttpEntity<>("", headers);
-        ResponseEntity<FileDTO> response = restTemplate.exchange(url, HttpMethod.DELETE, requestEntity, FileDTO.class);
+        ResponseEntity<File> response = restTemplate.exchange(url, HttpMethod.DELETE, requestEntity, File.class);
 
         if (response.getStatusCode()!= HttpStatus.OK) {
             throw new Exception("Data server error" + response.getStatusCode());

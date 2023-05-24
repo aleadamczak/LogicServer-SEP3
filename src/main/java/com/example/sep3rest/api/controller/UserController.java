@@ -1,9 +1,9 @@
 package com.example.sep3rest.api.controller;
 
-import com.example.sep3rest.api.model.domain.FileDTO;
+import com.example.sep3rest.api.model.domain.File;
 import com.example.sep3rest.api.model.domain.User;
-import com.example.sep3rest.api.model.domain.UserCreationDto;
-import com.example.sep3rest.api.model.domain.UserDisplayDto;
+import com.example.sep3rest.api.model.DTOs.UserCreationDto;
+import com.example.sep3rest.api.model.DTOs.UserDisplayDto;
 import com.example.sep3rest.api.model.logic.UserLogic;
 import com.example.sep3rest.api.model.logic.UserLogicImpl;
 import com.example.sep3rest.persistance.UserService;
@@ -28,12 +28,11 @@ public class UserController extends UserControllerGrpc.UserControllerImplBase {
     @Override
     public void getByUsername(Logicserver.String request, StreamObserver<Logicserver.User> responseObserver) {
         String username = request.getString();
+        System.out.println("In this method bro");
         //get the user from the data server
         User user = null;
         try {
             user = userLogic.isUserRegistered(username);
-
-
             // create the response
             Logicserver.User response = Logicserver.User.newBuilder().setId(user.getId())
                     .setUsername(user.getUsername()).setPassword(user.getPassword())
@@ -42,7 +41,6 @@ public class UserController extends UserControllerGrpc.UserControllerImplBase {
             responseObserver.onNext(response);
             responseObserver.onCompleted();
         } catch (Exception e) {
-            System.out.println("Exception in method getByUsername");
             System.out.println(e.getMessage());
             String errorMessage = e.getMessage();
             ErrorResponse response = ErrorResponse.newBuilder()
@@ -55,6 +53,14 @@ public class UserController extends UserControllerGrpc.UserControllerImplBase {
         }
 
     }
+
+    @Override
+    public void getAllDisplay(Logicserver.Empty request, StreamObserver<Logicserver.UserDisplayDtoList> responseObserver) {
+        Logicserver.UserDisplayDtoList userDisplayDtoList = userLogic.getAll();
+        responseObserver.onNext(userDisplayDtoList);
+        responseObserver.onCompleted();
+    }
+
 
     @Override
     public void getById(Logicserver.Id request, StreamObserver<Logicserver.User> responseObserver) {

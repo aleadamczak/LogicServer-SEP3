@@ -1,8 +1,7 @@
 package com.example.sep3rest.api.controller;
 
 import com.example.sep3rest.api.model.domain.File;
-import com.example.sep3rest.api.model.domain.FileDTO;
-import com.example.sep3rest.api.model.domain.FileDownloadDto;
+import com.example.sep3rest.api.model.DTOs.FileDownloadDto;
 import com.example.sep3rest.api.model.domain.User;
 import com.example.sep3rest.api.model.logic.FileLogic;
 import com.example.sep3rest.api.model.logic.FileLogicImpl;
@@ -11,15 +10,10 @@ import com.example.sep3rest.protobuf.FileControllerGrpc;
 import com.example.sep3rest.protobuf.Logicserver;
 import com.google.protobuf.ByteString;
 import io.grpc.Status;
-import io.grpc.StatusRuntimeException;
-import io.grpc.netty.shaded.io.netty.handler.codec.http2.Http2Exception;
 import io.grpc.reflection.v1alpha.ErrorResponse;
 import io.grpc.stub.StreamObserver;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.HttpServerErrorException;
 
 import java.util.List;
 
@@ -43,7 +37,7 @@ public class FileController extends FileControllerGrpc.FileControllerImplBase {
             fileLogic.validateFile(request);
 
             //convert proto file to domain object and then send to the data server
-            FileDTO newFile = fileService.storeFile(fileLogic.protoToFile(request)).getBody();
+            File newFile = fileService.storeFile(fileLogic.protoToFile(request)).getBody();
 
             System.out.println(newFile.getContentType());
 
@@ -104,12 +98,12 @@ public class FileController extends FileControllerGrpc.FileControllerImplBase {
 
     @Override
     public void getAll(Logicserver.Empty request, StreamObserver<Logicserver.FileDisplayList> responseObserver) {
-        List<FileDTO> dtos = fileService.getAllFiles();
+        List<File> dtos = fileService.getAllFiles();
 
         try
         {
             Logicserver.FileDisplayList.Builder list = Logicserver.FileDisplayList.newBuilder();
-            for (FileDTO file : dtos)
+            for (File file : dtos)
             {
 
                 Logicserver.FileDisplayDto.Builder fileDtoBuilder = Logicserver.FileDisplayDto.newBuilder()
