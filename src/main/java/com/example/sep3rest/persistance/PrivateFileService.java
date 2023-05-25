@@ -1,6 +1,7 @@
 package com.example.sep3rest.persistance;
 
 
+import com.example.sep3rest.api.model.DTOs.FileDownloadDto;
 import com.example.sep3rest.api.model.DTOs.PrivateFileDisplayDto;
 import com.example.sep3rest.api.model.DTOs.UserDisplayDto;
 import com.example.sep3rest.api.model.domain.Category;
@@ -55,6 +56,17 @@ public class PrivateFileService {
             throw new Exception(responseEntity.getStatusCode().toString());
         }
         return responseEntity;
+    }
+
+    public ResponseEntity<FileDownloadDto> downloadFile(int fileId) {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<Integer> request = new HttpEntity<>(fileId, headers);
+        String url = "http://localhost:5285/PrivateFile/downloadPrivateFile?fileId={fileId}";
+        ResponseEntity<FileDownloadDto> response = restTemplate.exchange(url, HttpMethod.GET, request, FileDownloadDto.class,fileId);
+
+        return response;
+
     }
 
 

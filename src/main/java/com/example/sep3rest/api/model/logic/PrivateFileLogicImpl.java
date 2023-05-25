@@ -1,5 +1,6 @@
 package com.example.sep3rest.api.model.logic;
 
+import com.example.sep3rest.api.model.DTOs.FileDownloadDto;
 import com.example.sep3rest.api.model.DTOs.PrivateFileCreationDTO;
 import com.example.sep3rest.api.model.DTOs.PrivateFileDisplayDto;
 import com.example.sep3rest.api.model.domain.*;
@@ -102,6 +103,15 @@ public class PrivateFileLogicImpl implements PrivateFileLogic{
         return Logicserver.User.newBuilder().setPassword(user.getPassword())
                 .setUsername(user.getUsername()).setIsAdmin(user.isAdmin())
                 .setId(user.getId()).setName(user.getName()).build();
+    }
+
+    @Override
+    public Logicserver.FileDownloadDto FileToProto(FileDownloadDto file) {
+        Logicserver.FileDownloadDto response = Logicserver.FileDownloadDto.newBuilder()
+                .setBytes(ByteString.copyFrom(file.getBytes()))
+                .setTitle(file.getTitle())
+                .setContentType(file.getContentType()).build();
+        return response;
     }
 
 
