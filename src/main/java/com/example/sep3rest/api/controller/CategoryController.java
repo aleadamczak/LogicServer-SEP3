@@ -8,9 +8,6 @@ import com.example.sep3rest.protobuf.CategoryControllerGrpc;
 import com.example.sep3rest.protobuf.Logicserver;
 import io.grpc.stub.StreamObserver;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
