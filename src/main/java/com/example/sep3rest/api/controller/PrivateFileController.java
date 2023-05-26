@@ -1,5 +1,6 @@
 package com.example.sep3rest.api.controller;
 
+import com.example.sep3rest.api.model.DTOs.FileDownloadDto;
 import com.example.sep3rest.api.model.DTOs.PrivateFileDisplayDto;
 import com.example.sep3rest.api.model.domain.PrivateFile;
 import com.example.sep3rest.api.model.domain.User;
@@ -67,6 +68,27 @@ public class PrivateFileController extends PrivateFileControllerGrpc.PrivateFile
 
     @Override
     public void download(Logicserver.Id request, StreamObserver<Logicserver.FileDownloadDto> responseObserver) {
+        try{
+            int id = request.getId();
+
+            FileDownloadDto downloadFile = privateFileService.downloadFile(id).getBody();
+
+            Logicserver.FileDownloadDto response = privateFileLogic.FileToProto(downloadFile);
+
+            responseObserver.onNext(response);
+            responseObserver.onCompleted();
+        } catch (Exception e)
+        {
+            if (e.getMessage().toString().equals("500 Internal Server Error: \"\"Object reference not set to an instance of an object.\"\""))
+            {
+                String errorMessage = e.getMessage();
+                responseObserver.onError(Status.INTERNAL.withDescription(errorMessage)
+                        .asRuntimeException());
+            }
+            else {
+                System.out.println(e.getMessage());
+            }
+        }
 
     }
 
