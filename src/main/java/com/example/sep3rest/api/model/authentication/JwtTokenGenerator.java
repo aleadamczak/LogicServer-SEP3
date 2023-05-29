@@ -26,7 +26,7 @@ public class JwtTokenGenerator {
         .claim("username", user.getUsername())
         .claim("password", user.getPassword())
         .claim("name", user.getName())
-        .claim("isAdmin", user.isAdmin())
+        .claim("isAdmin", String.valueOf(user.isAdmin()))
         .claim("id", user.getId())
         .setExpiration(new Date(expirationTimeMillis))
         .signWith(key);
