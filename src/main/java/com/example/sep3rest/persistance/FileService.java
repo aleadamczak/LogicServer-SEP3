@@ -1,9 +1,11 @@
 package com.example.sep3rest.persistance;
 
 import com.example.sep3rest.api.model.DTOs.FileCreationDTO;
+import com.example.sep3rest.api.model.DTOs.FileUpdateDto;
 import com.example.sep3rest.api.model.domain.File;
 import com.example.sep3rest.api.model.DTOs.FileDownloadDto;
 
+import com.example.sep3rest.protobuf.Logicserver;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -105,4 +107,21 @@ public class FileService {
         }
         return response;
     }
+
+    public ResponseEntity<File> update(FileUpdateDto file) throws Exception {
+        String url = "http://localhost:5285/file/uncategorize/" + file.getId();
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<String> requestEntity = new HttpEntity<>("", headers);
+        ResponseEntity<File> response = restTemplate.exchange(url, HttpMethod.PUT, requestEntity, File.class);
+
+        if (response.getStatusCode()!= HttpStatus.OK) {
+            throw new Exception("Data server error" + response.getStatusCode());
+        }
+        return response;
+    }
+
+
+
+
 }

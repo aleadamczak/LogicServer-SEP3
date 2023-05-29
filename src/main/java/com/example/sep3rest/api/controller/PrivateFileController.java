@@ -125,4 +125,22 @@ public class PrivateFileController extends PrivateFileControllerGrpc.PrivateFile
 
 
     }
+
+    @Override
+    public void remove(Logicserver.Id request, StreamObserver<Logicserver.Empty> responseObserver) {
+        try {
+            privateFileService.delete(request.getId()).getBody();
+            responseObserver.onNext(Logicserver.Empty.newBuilder().build());
+            responseObserver.onCompleted();
+        } catch (Exception e) {
+            String errorMessage = e.getMessage();
+            ErrorResponse response = ErrorResponse.newBuilder()
+                    .setErrorMessage(errorMessage)
+                    .build();
+            responseObserver.onError(
+                    Status.INTERNAL
+                            .withDescription(errorMessage)
+                            .asRuntimeException());
+        }
+    }
 }

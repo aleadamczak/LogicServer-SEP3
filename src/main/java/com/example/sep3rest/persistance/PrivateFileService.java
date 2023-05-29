@@ -5,6 +5,7 @@ import com.example.sep3rest.api.model.DTOs.FileDownloadDto;
 import com.example.sep3rest.api.model.DTOs.PrivateFileDisplayDto;
 import com.example.sep3rest.api.model.DTOs.UserDisplayDto;
 import com.example.sep3rest.api.model.domain.Category;
+import com.example.sep3rest.api.model.domain.File;
 import com.example.sep3rest.api.model.domain.PrivateFile;
 import com.example.sep3rest.api.model.DTOs.PrivateFileCreationDTO;
 import com.example.sep3rest.api.model.domain.User;
@@ -66,7 +67,19 @@ public class PrivateFileService {
         ResponseEntity<FileDownloadDto> response = restTemplate.exchange(url, HttpMethod.GET, request, FileDownloadDto.class,fileId);
 
         return response;
+    }
 
+    public ResponseEntity<PrivateFile> delete(int id) throws Exception {
+        String url = "http://localhost:5285/PrivateFile/" + id;
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<String> requestEntity = new HttpEntity<>("", headers);
+        ResponseEntity<PrivateFile> response = restTemplate.exchange(url, HttpMethod.DELETE, requestEntity, PrivateFile.class);
+
+        if (response.getStatusCode()!= HttpStatus.OK) {
+            throw new Exception("Data server error" + response.getStatusCode() + response.toString());
+        }
+        return response;
     }
 
 
