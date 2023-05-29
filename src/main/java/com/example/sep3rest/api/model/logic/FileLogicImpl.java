@@ -2,6 +2,7 @@ package com.example.sep3rest.api.model.logic;
 
 import com.example.sep3rest.api.model.DTOs.FileCreationDTO;
 import com.example.sep3rest.api.model.DTOs.FileDownloadDto;
+import com.example.sep3rest.api.model.DTOs.FileUpdateDto;
 import com.example.sep3rest.api.model.domain.*;
 import com.example.sep3rest.protobuf.Logicserver;
 import com.google.protobuf.ByteString;
@@ -77,5 +78,13 @@ public class FileLogicImpl implements FileLogic {
                 .setTitle(file.getTitle())
                 .setContentType(file.getContentType()).build();
         return response;
+    }
+
+    @Override
+    public FileUpdateDto protoToFileUpdate(Logicserver.FileUpdateDto file) {
+        Category category = new Category("Uncategorized",0);
+
+        return new FileUpdateDto(file.getTitle(), file.getDescription(), category,
+                file.getId());
     }
 }

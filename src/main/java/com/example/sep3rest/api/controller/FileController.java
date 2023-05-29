@@ -144,7 +144,32 @@ public class FileController extends FileControllerGrpc.FileControllerImplBase {
 
     @Override
     public void update(Logicserver.FileUpdateDto request, StreamObserver<Logicserver.File> responseObserver) {
-        super.update(request, responseObserver);
+
+        try {
+
+
+            File newFile = fileService.update(fileLogic.protoToFileUpdate(request)).getBody();
+
+            System.out.println(newFile.getContentType());
+
+            User user = newFile.getUploadedBy();
+
+            //construct the proto response from the retrieved file
+            Logicserver.Category categoryResponse = Logicserver.Category.newBuilder().setName(request.getCategory().getName()).build();
+
+            Logicserver.File response = Logicserver.File.newBuilder()
+                    .setCategory(categoryResponse)
+                    .setDescription(newFile.getDescription())
+                    .setContentType(newFile.getContentType())
+                    .setBytes(ByteString.copyFrom(newFile.getBytes()))
+                    .setId(newFile.getId()).setTitle(newFile.getTitle()).build();
+
+            responseObserver.onNext(response);
+            responseObserver.onCompleted();
+
+        }catch (Exception e){
+            System.out.println(e);
+        }
     }
 
     @Override
@@ -152,6 +177,7 @@ public class FileController extends FileControllerGrpc.FileControllerImplBase {
         try {
             fileService.delete(request.getId()).getBody();
             responseObserver.onNext(Logicserver.Empty.newBuilder().build());
+            responseObserver.onCompleted();
         } catch (Exception e) {
             String errorMessage = e.getMessage();
             ErrorResponse response = ErrorResponse.newBuilder()
