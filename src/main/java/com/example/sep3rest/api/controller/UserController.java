@@ -1,5 +1,6 @@
 package com.example.sep3rest.api.controller;
 
+import com.example.sep3rest.api.model.authentication.JwtTokenGenerator;
 import com.example.sep3rest.api.model.domain.File;
 import com.example.sep3rest.api.model.domain.User;
 import com.example.sep3rest.api.model.DTOs.UserCreationDto;
@@ -99,7 +100,7 @@ public class UserController extends UserControllerGrpc.UserControllerImplBase {
     }
 
     @Override
-    public void logIn(Logicserver.UserLogInDto request, StreamObserver<Logicserver.User> responseObserver) {
+    public void logIn(Logicserver.UserLogInDto request, StreamObserver<Logicserver.UserTokenDto> responseObserver) {
 
         User user;
         try {
@@ -107,9 +108,11 @@ public class UserController extends UserControllerGrpc.UserControllerImplBase {
 
             if (user.getPassword().equals(request.getPassword()))
             {
+                String token = JwtTokenGenerator.generateJwtToken(user);
+
                 // create the response
-                Logicserver.User response = Logicserver.User.newBuilder().setId(user.getId()).setUsername(user.getUsername())
-                    .setPassword(user.getPassword()).setIsAdmin(user.isAdmin()).setName(user.getName()).build();
+                Logicserver.UserTokenDto response = Logicserver.UserTokenDto.newBuilder().setId(user.getId()).setUsername(user.getUsername())
+                    .setPassword(user.getPassword()).setIsAdmin(user.isAdmin()).setName(user.getName()).setToken(token).build();
                 //send the response
                 responseObserver.onNext(response);
                 responseObserver.onCompleted();
